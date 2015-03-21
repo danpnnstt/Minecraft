@@ -1,0 +1,7 @@
+[16:09:44] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[16:09:44] [Server thread/WARN]: To start the server with more ram, launch it as "java -Xmx1024M -Xms1024M -jar minecraft_server.jar"
+[16:09:51] [Server thread/INFO]: Loading properties
+[16:09:51] [Server thread/WARN]: server.properties does not exist
+[16:09:51] [Server thread/INFO]: Generating new properties file
+[16:09:51] [Server thread/WARN]: Failed to load eula.txt
+[16:09:51] [Server thread/INFO]: You need to agree to the EULA in order to run the server. Go to eula.txt for more info.

@@ -1,0 +1,4 @@
+Hello, $PLAYER$!
+Welcome to the Minecraft server for EDMC Employees
+
+
