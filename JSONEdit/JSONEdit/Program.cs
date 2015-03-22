@@ -24,7 +24,17 @@ namespace JSONEdit
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm());
+			//Application.Run(new MainForm());
+            try
+            {
+                MainForm.BASE_DIRECTORY = args[0];
+            }
+            catch
+            {
+                MainForm.BASE_DIRECTORY = Environment.CurrentDirectory + "/";
+            }
+            MainForm mf = new MainForm();
+            mf.ShowDialog();
 		}
 		
 	}

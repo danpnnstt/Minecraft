@@ -11,3 +11,15 @@ C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\bin\Debug\Newt
 C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\bin\Debug\Newtonsoft.Json.xml
 C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\obj\Debug\JSONEdit.PlayerForm.resources
 C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\obj\Debug\JSONEdit.GroupForm.resources
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\bin\Debug\JSONEdit.exe.config
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\obj\Debug\JSONEdit.exe
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\obj\Debug\JSONEdit.pdb
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\bin\Debug\JSONEdit.exe
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\bin\Debug\JSONEdit.pdb
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\obj\Debug\JSONEdit.GroupForm.resources
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\obj\Debug\JSONEdit.MainForm.resources
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\obj\Debug\JSONEdit.PlayerForm.resources
+C:\Users\Daniel\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\obj\Debug\JSONEdit.csproj.GenerateResource.Cache

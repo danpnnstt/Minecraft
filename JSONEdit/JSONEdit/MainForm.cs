@@ -20,7 +20,7 @@ namespace JSONEdit
 	/// </summary>
 	public partial class MainForm : Form
 	{
-		public static string BASE_DIRECTORY = @"C:\Users\dhartenbach\Downloads\minecraft\";
+		public static string BASE_DIRECTORY = @"";
 		private Dictionary<string, KeyValuePair<JSONGroupFile, string>> groups;
 		private Dictionary<string, CheckBox> permissionBoxes;
 		
