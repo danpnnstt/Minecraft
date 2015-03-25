@@ -31,7 +31,18 @@ namespace JSONEdit
             }
             catch
             {
-                MainForm.BASE_DIRECTORY = Environment.CurrentDirectory + "/";
+            	FolderBrowserDialog diag = new FolderBrowserDialog();
+            	diag.Description = "Set working directory";
+            	diag.RootFolder = Environment.SpecialFolder.Desktop;
+            	if(diag.ShowDialog() == DialogResult.OK)
+            	{
+            		MainForm.BASE_DIRECTORY = diag.SelectedPath + "/";
+            	}
+            	else
+            	{
+            		MessageBox.Show("Error: no working directory provided.  Using current directory.", "No working directory", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            		MainForm.BASE_DIRECTORY = Environment.CurrentDirectory + "/";
+            	}
             }
             MainForm mf = new MainForm();
             mf.ShowDialog();

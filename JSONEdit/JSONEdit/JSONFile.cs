@@ -33,6 +33,10 @@ namespace JSONEdit
 			{
 				return typeof(JSONGroupFile);
 			}
+			else if(Path.GetFileName(fileName) == "server.properties")
+			{
+				return typeof(ServerPropertiesFile);
+			}
 			else
 			{
 				return typeof(JSONFile);
@@ -44,6 +48,127 @@ namespace JSONEdit
 		[SecurityPermission(SecurityAction.LinkDemand,
             Flags = SecurityPermissionFlag.SerializationFormatter)]
 		public virtual void GetObjectData(SerializationInfo info, StreamingContext context) { }
+	}
+	
+	public class ServerPropertiesFile
+	{
+		private Dictionary<string, string> properties;
+		private string timestamp;
+
+		public string this[string key]
+		{
+			get { return properties[key]; }
+			set { properties[key] = value; }
+		}
+
+		public string[] PropertyList
+		{
+			get { return properties.Keys.ToArray<string>(); }
+		}
+
+		public ServerPropertiesFile()
+		{
+			timestamp = "";
+			properties = new Dictionary<string, string>();
+			FillDictionary();
+		}
+
+		private void FillDictionary()
+		{
+			properties.Clear();
+			properties.Add("generator-settings", "");
+			properties.Add("op-permission-level", "");
+			properties.Add("allow-nether", "");
+			properties.Add("level-name", "");
+			properties.Add("enable-query", "");
+			properties.Add("allow-flight", "");
+			properties.Add("announce-player-achievements", "");
+			properties.Add("server-port", "");
+			properties.Add("level-type", "");
+			properties.Add("enable-rcon", "");
+			properties.Add("force-gamemode", "");
+			properties.Add("level-seed", "");
+			properties.Add("server-ip", "");
+			properties.Add("spawn-npcs", "");
+			properties.Add("white-list", "");
+			properties.Add("spawn-animals", "");
+			properties.Add("snooper-enabled", "");
+			properties.Add("hardcore", "false");
+			properties.Add("online-mode", "");
+			properties.Add("resource-pack", "");
+			properties.Add("pvp", "");
+			properties.Add("difficulty", "");
+			properties.Add("enable-command-block", "");
+			properties.Add("player-idle-timeout", "");
+			properties.Add("gamemode", "");
+			properties.Add("max-players", "");
+			properties.Add("spawn-monsters", "");
+			properties.Add("view-distance", "");
+			properties.Add("generate-structures", "");
+			properties.Add("motd", "");
+		}
+		
+		public bool ReadFile(string filePath)
+		{
+			try 
+			{
+				FillDictionary();
+				using(FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+				{
+					using(StreamReader reader = new StreamReader(stream))
+					{
+						reader.ReadLine();
+						timestamp = reader.ReadLine();
+						while(!reader.EndOfStream)
+						{
+							string line = reader.ReadLine();
+							string key = line.Split('=')[0];
+							string value = line.Split('=')[1];
+							properties[key] = value;
+						}
+					}
+				}
+				return true;
+			} 
+			catch (System.Exception e) 
+			{
+				return false;
+			} 
+			finally 
+			{
+				
+			}
+		}
+		
+		public bool SaveFile(string filePath)
+		{
+			try 
+			{
+				using(FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+				{
+					using(StreamWriter writer = new StreamWriter(stream))
+					{
+						writer.WriteLine("#Minecraft server properties");
+						writer.WriteLine(timestamp);
+						string[] keys = properties.Keys.ToArray<string>();
+						foreach(string key in keys)
+						{
+							string value = properties[key];
+							writer.WriteLine(key + "=" + value);
+						}
+					}
+				}
+				return true;
+			} 
+			catch (System.Exception e) 
+			{
+				return false;
+			}
+			finally 
+			{
+				
+			}
+		}
 	}
 	
 	public class JSONGroupFile : JSONFile

@@ -21,35 +21,124 @@ namespace JSONEdit
 	public partial class MainForm : Form
 	{
 		public static string BASE_DIRECTORY = @"";
+		private ServerPropertiesFile propertiesFile;
 		private Dictionary<string, KeyValuePair<JSONGroupFile, string>> groups;
+		private Dictionary<string, CheckBox> propertyBoxes;
+		private Dictionary<string, TextBox> propertyTextfields;
 		private Dictionary<string, CheckBox> permissionBoxes;
+		
 		
 		public MainForm()
 		{
 			InitializeComponent();
+			propertiesFile = new ServerPropertiesFile();
+			propertyTextfields = new Dictionary<string, TextBox>();
+			propertyBoxes = new Dictionary<string, CheckBox>();
 			cboParent.Items.Add("None");
 			permissionBoxes = new Dictionary<string, CheckBox>();
 			groups = new Dictionary<string, KeyValuePair<JSONGroupFile, string>>();
 			SetToolTips();
 			SetCheckboxGroups();
 			LoadGroups();
+			LoadProperties();
+			ValidateGroups(); //This method will attempt to trace the parent paths for all groups to detect any errors.  If an error is found, the user is notified and the permissions tab is disabled.  To correct, the user must manually edit the file and correct the parent permissions.
+		}
+		
+		private void ValidateGroups()
+		{
+			try
+			{
+				string[] files = groups.Keys.ToArray<string>();
+				foreach(string f in files)
+				{
+					string pg = groups[f].Key.ParentGroup;
+					while(!string.IsNullOrWhiteSpace(pg))
+					{
+						if(!File.Exists(BASE_DIRECTORY + "servertools//permission//groups//" + pg + ".json"))
+						{
+							throw new FileNotFoundException();
+						}
+						pg = groups[pg].Key.ParentGroup;
+					}
+				}
+			}
+			catch
+			{
+				MessageBox.Show("Error: Failed to validate group paths.  Disabling permissions tab for system stability.", "Failed to verify group paths", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				tcContent.TabPages.Remove(tpPermissions);
+			}
+		}
+		
+		private void LoadProperties()
+		{
+			try
+			{
+				string path = BASE_DIRECTORY + "server.properties";
+				if(!File.Exists(path))
+				{
+					throw new Exception();
+				}
+				ServerPropertiesFile spf = new ServerPropertiesFile();
+				if(!spf.ReadFile(path))
+				{
+					throw new Exception();
+				}
+				else
+				{
+					string[] textKeys = propertyTextfields.Keys.ToArray<string>();
+					string[] chkKeys = propertyBoxes.Keys.ToArray<string>();
+					foreach(string k in textKeys)
+					{
+						propertyTextfields[k].Text = spf[k];
+					}
+					foreach(string k in chkKeys)
+					{
+						if(string.IsNullOrWhiteSpace(spf[k].Trim()))
+						{
+							propertyBoxes[k].Checked = false;
+						}
+						else if(spf[k].Trim().ToLower() == "false")
+						{
+							propertyBoxes[k].Checked = false;
+						}
+						else
+						{
+							propertyBoxes[k].Checked = true;
+						}
+					}
+					propertiesFile = spf;
+				}
+			}
+			catch
+			{
+				MessageBox.Show("Error: cannot find 'server.properties' file.  Please verify minecraft is properly installed and re-execute this program.  Fatal error 0x00000001", "Fatal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				this.Dispose();
+			}
 		}
 		
 		private void LoadGroups()
 		{
-			string[] files = Directory.GetFiles(BASE_DIRECTORY, "*.json", SearchOption.AllDirectories);
-			foreach(string f in files)
+			try
 			{
-				if(JSONFile.GetFileType(f) == typeof(JSONGroupFile))
+				string[] files = Directory.GetFiles(BASE_DIRECTORY + "servertools//permission//groups", "*.json", SearchOption.AllDirectories);
+				foreach(string f in files)
 				{
-					JSONGroupFile jgf = new JSONGroupFile();
-					if(jgf.ReadFile(f) == true)
+					if(JSONFile.GetFileType(f) == typeof(JSONGroupFile))
 					{
-						groups.Add(Path.GetFileNameWithoutExtension(f), new KeyValuePair<JSONGroupFile, string>(jgf, f));
-						cboGroup.Items.Add(Path.GetFileNameWithoutExtension(f));
-						cboParent.Items.Add(Path.GetFileNameWithoutExtension(f));
+						JSONGroupFile jgf = new JSONGroupFile();
+						if(jgf.ReadFile(f) == true)
+						{
+							groups.Add(Path.GetFileNameWithoutExtension(f), new KeyValuePair<JSONGroupFile, string>(jgf, f));
+							cboGroup.Items.Add(Path.GetFileNameWithoutExtension(f));
+							cboParent.Items.Add(Path.GetFileNameWithoutExtension(f));
+						}
 					}
 				}
+			}
+			catch
+			{
+				MessageBox.Show("Failed to load group files!  Disabling permissions tab....", "Error loading file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				tcContent.TabPages.Remove(tpPermissions);
 			}
 		}
 		
@@ -117,6 +206,39 @@ namespace JSONEdit
 		
 		private void SetCheckboxGroups()
 		{
+			#region
+			propertyBoxes.Add("allow-flight", chkAllowFlight);
+			propertyBoxes.Add("allow-nether", chkAllowNether);
+			propertyBoxes.Add("announce-player-achievements", chkAnnouncePlayerAchievements);
+			propertyBoxes.Add("enable-command-block", chkEnableCommandBlock);
+			propertyBoxes.Add("enable-query", chkEnableQuery);
+			propertyBoxes.Add("enable-rcon", chkEnableRCON);
+			propertyBoxes.Add("force-gamemode", chkForceGamemode);
+			propertyBoxes.Add("generate-structures", chkGenerateStructures);
+			propertyBoxes.Add("hardcore", chkHardcore);
+			propertyBoxes.Add("online-mode", chkOnlineMode);
+			propertyBoxes.Add("pvp", chkPVP);
+			propertyBoxes.Add("snooper-enabled", chkSnooperEnabled);
+			propertyBoxes.Add("spawn-animals", chkSpawnAnimals);
+			propertyBoxes.Add("spawn-monsters", chkSpawnMonsters);
+			propertyBoxes.Add("spawn-npcs", chkSpawnNPCs);
+			propertyBoxes.Add("white-list", chkWhiteListEnable);
+			propertyTextfields.Add("difficulty", txtDifficulty);
+			propertyTextfields.Add("gamemode", txtGamemode);
+			propertyTextfields.Add("generator-settings", txtGeneratorSettings);
+			propertyTextfields.Add("level-name", txtLevelName);
+			propertyTextfields.Add("level-seed", txtLevelSeed);
+			propertyTextfields.Add("level-type", txtLevelType);
+			propertyTextfields.Add("max-build-height", txtMaxBuildHeight);
+			propertyTextfields.Add("max-players", txtMaxPlayers);
+			propertyTextfields.Add("motd", txtMOTD);
+			propertyTextfields.Add("op-permission-level", txtOpPermissionLevel);
+			propertyTextfields.Add("player-idle-timeout", txtPlayerIdleTimeout);
+			propertyTextfields.Add("resource-pack", txtResourcePack);
+			propertyTextfields.Add("server-ip", txtServerIP);
+			propertyTextfields.Add("server-port", txtServerPort);
+			propertyTextfields.Add("view-distance", txtViewDistance);
+			#endregion
 			permissionBoxes.Add("achievement", chkAchievement);
 			permissionBoxes.Add("ban", chkBan);
 			permissionBoxes.Add("banip", chkBanIP);
@@ -322,6 +444,26 @@ namespace JSONEdit
 		void ExitToolStripMenuItemClick(object sender, EventArgs e)
 		{
 			this.Dispose();
+		}
+		
+		void BtnReloadFileClick(object sender, EventArgs e)
+		{
+			LoadProperties();
+		}
+		
+		void BtnSaveFileClick(object sender, EventArgs e)
+		{
+			string[] keysT = propertyTextfields.Keys.ToArray<string>();
+			string[] keysC = propertyBoxes.Keys.ToArray<string>();
+			foreach(string k in keysT)
+			{
+				propertiesFile[k] = propertyTextfields[k].Text;
+			}
+			foreach(string k in keysC)
+			{
+				propertiesFile[k] = propertyBoxes[k].Checked.ToString();
+			}
+			propertiesFile.SaveFile(BASE_DIRECTORY + "server.properties");
 		}
 	}
 }

@@ -92,6 +92,55 @@ namespace JSONEdit
 		private System.Windows.Forms.CheckBox chkStop;
 		private System.Windows.Forms.Button btnRemoveAll;
 		private System.Windows.Forms.Button btnGrantAll;
+		private System.Windows.Forms.TabPage tpServerProperties;
+		private System.Windows.Forms.TextBox txtGeneratorSettings;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.TextBox txtLevelType;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.TextBox txtServerIP;
+		private System.Windows.Forms.Label label8;
+		private System.Windows.Forms.TextBox txtLevelSeed;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.TextBox txtMaxBuildHeight;
+		private System.Windows.Forms.Label label9;
+		private System.Windows.Forms.TextBox txtResourcePack;
+		private System.Windows.Forms.Label label10;
+		private System.Windows.Forms.TextBox txtDifficulty;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.TextBox txtMOTD;
+		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.TextBox txtViewDistance;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.TextBox txtMaxPlayers;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.TextBox txtGamemode;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.TextBox txtPlayerIdleTimeout;
+		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.TextBox txtOpPermissionLevel;
+		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.TextBox txtLevelName;
+		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.CheckBox chkEnableQuery;
+		private System.Windows.Forms.CheckBox chkAllowNether;
+		private System.Windows.Forms.CheckBox chkGenerateStructures;
+		private System.Windows.Forms.CheckBox chkSpawnMonsters;
+		private System.Windows.Forms.CheckBox chkEnableCommandBlock;
+		private System.Windows.Forms.CheckBox chkPVP;
+		private System.Windows.Forms.CheckBox chkOnlineMode;
+		private System.Windows.Forms.CheckBox chkHardcore;
+		private System.Windows.Forms.CheckBox chkSnooperEnabled;
+		private System.Windows.Forms.CheckBox chkSpawnAnimals;
+		private System.Windows.Forms.CheckBox chkWhiteListEnable;
+		private System.Windows.Forms.CheckBox chkSpawnNPCs;
+		private System.Windows.Forms.CheckBox chkForceGamemode;
+		private System.Windows.Forms.CheckBox chkEnableRCON;
+		private System.Windows.Forms.CheckBox chkAnnouncePlayerAchievements;
+		private System.Windows.Forms.CheckBox chkAllowFlight;
+		private System.Windows.Forms.TextBox txtServerPort;
+		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Button btnSaveFile;
+		private System.Windows.Forms.Button btnReloadFile;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -193,11 +242,61 @@ namespace JSONEdit
 			this.cboGroup = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
+			this.tpServerProperties = new System.Windows.Forms.TabPage();
+			this.btnSaveFile = new System.Windows.Forms.Button();
+			this.btnReloadFile = new System.Windows.Forms.Button();
+			this.txtServerPort = new System.Windows.Forms.TextBox();
+			this.label19 = new System.Windows.Forms.Label();
+			this.chkGenerateStructures = new System.Windows.Forms.CheckBox();
+			this.chkSpawnMonsters = new System.Windows.Forms.CheckBox();
+			this.chkEnableCommandBlock = new System.Windows.Forms.CheckBox();
+			this.chkPVP = new System.Windows.Forms.CheckBox();
+			this.chkOnlineMode = new System.Windows.Forms.CheckBox();
+			this.chkHardcore = new System.Windows.Forms.CheckBox();
+			this.chkSnooperEnabled = new System.Windows.Forms.CheckBox();
+			this.chkSpawnAnimals = new System.Windows.Forms.CheckBox();
+			this.chkWhiteListEnable = new System.Windows.Forms.CheckBox();
+			this.chkSpawnNPCs = new System.Windows.Forms.CheckBox();
+			this.chkForceGamemode = new System.Windows.Forms.CheckBox();
+			this.chkEnableRCON = new System.Windows.Forms.CheckBox();
+			this.chkAnnouncePlayerAchievements = new System.Windows.Forms.CheckBox();
+			this.chkAllowFlight = new System.Windows.Forms.CheckBox();
+			this.txtLevelName = new System.Windows.Forms.TextBox();
+			this.label18 = new System.Windows.Forms.Label();
+			this.chkEnableQuery = new System.Windows.Forms.CheckBox();
+			this.chkAllowNether = new System.Windows.Forms.CheckBox();
+			this.txtOpPermissionLevel = new System.Windows.Forms.TextBox();
+			this.label17 = new System.Windows.Forms.Label();
+			this.txtMOTD = new System.Windows.Forms.TextBox();
+			this.label16 = new System.Windows.Forms.Label();
+			this.txtViewDistance = new System.Windows.Forms.TextBox();
+			this.label15 = new System.Windows.Forms.Label();
+			this.txtMaxPlayers = new System.Windows.Forms.TextBox();
+			this.label14 = new System.Windows.Forms.Label();
+			this.txtGamemode = new System.Windows.Forms.TextBox();
+			this.label13 = new System.Windows.Forms.Label();
+			this.txtPlayerIdleTimeout = new System.Windows.Forms.TextBox();
+			this.label12 = new System.Windows.Forms.Label();
+			this.txtDifficulty = new System.Windows.Forms.TextBox();
+			this.label11 = new System.Windows.Forms.Label();
+			this.txtResourcePack = new System.Windows.Forms.TextBox();
+			this.label10 = new System.Windows.Forms.Label();
+			this.txtMaxBuildHeight = new System.Windows.Forms.TextBox();
+			this.label9 = new System.Windows.Forms.Label();
+			this.txtServerIP = new System.Windows.Forms.TextBox();
+			this.label8 = new System.Windows.Forms.Label();
+			this.txtLevelSeed = new System.Windows.Forms.TextBox();
+			this.label7 = new System.Windows.Forms.Label();
+			this.txtLevelType = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.txtGeneratorSettings = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.menuStrip1.SuspendLayout();
 			this.tcContent.SuspendLayout();
 			this.tpPermissions.SuspendLayout();
 			this.grpPermissions.SuspendLayout();
+			this.tpServerProperties.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -221,18 +320,19 @@ namespace JSONEdit
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
 			this.exitToolStripMenuItem.Text = "Exit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItemClick);
 			// 
 			// tcContent
 			// 
 			this.tcContent.Controls.Add(this.tpPermissions);
+			this.tcContent.Controls.Add(this.tpServerProperties);
 			this.tcContent.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tcContent.Location = new System.Drawing.Point(0, 24);
 			this.tcContent.Name = "tcContent";
 			this.tcContent.SelectedIndex = 0;
-			this.tcContent.Size = new System.Drawing.Size(934, 419);
+			this.tcContent.Size = new System.Drawing.Size(934, 431);
 			this.tcContent.TabIndex = 1;
 			// 
 			// tpPermissions
@@ -254,7 +354,7 @@ namespace JSONEdit
 			this.tpPermissions.Location = new System.Drawing.Point(4, 22);
 			this.tpPermissions.Name = "tpPermissions";
 			this.tpPermissions.Padding = new System.Windows.Forms.Padding(3);
-			this.tpPermissions.Size = new System.Drawing.Size(926, 393);
+			this.tpPermissions.Size = new System.Drawing.Size(926, 405);
 			this.tpPermissions.TabIndex = 0;
 			this.tpPermissions.Text = "Permissions";
 			this.tpPermissions.UseVisualStyleBackColor = true;
@@ -1086,11 +1186,489 @@ namespace JSONEdit
 			this.label1.TabIndex = 0;
 			this.label1.Text = resources.GetString("label1.Text");
 			// 
+			// tpServerProperties
+			// 
+			this.tpServerProperties.Controls.Add(this.btnSaveFile);
+			this.tpServerProperties.Controls.Add(this.btnReloadFile);
+			this.tpServerProperties.Controls.Add(this.txtServerPort);
+			this.tpServerProperties.Controls.Add(this.label19);
+			this.tpServerProperties.Controls.Add(this.chkGenerateStructures);
+			this.tpServerProperties.Controls.Add(this.chkSpawnMonsters);
+			this.tpServerProperties.Controls.Add(this.chkEnableCommandBlock);
+			this.tpServerProperties.Controls.Add(this.chkPVP);
+			this.tpServerProperties.Controls.Add(this.chkOnlineMode);
+			this.tpServerProperties.Controls.Add(this.chkHardcore);
+			this.tpServerProperties.Controls.Add(this.chkSnooperEnabled);
+			this.tpServerProperties.Controls.Add(this.chkSpawnAnimals);
+			this.tpServerProperties.Controls.Add(this.chkWhiteListEnable);
+			this.tpServerProperties.Controls.Add(this.chkSpawnNPCs);
+			this.tpServerProperties.Controls.Add(this.chkForceGamemode);
+			this.tpServerProperties.Controls.Add(this.chkEnableRCON);
+			this.tpServerProperties.Controls.Add(this.chkAnnouncePlayerAchievements);
+			this.tpServerProperties.Controls.Add(this.chkAllowFlight);
+			this.tpServerProperties.Controls.Add(this.txtLevelName);
+			this.tpServerProperties.Controls.Add(this.label18);
+			this.tpServerProperties.Controls.Add(this.chkEnableQuery);
+			this.tpServerProperties.Controls.Add(this.chkAllowNether);
+			this.tpServerProperties.Controls.Add(this.txtOpPermissionLevel);
+			this.tpServerProperties.Controls.Add(this.label17);
+			this.tpServerProperties.Controls.Add(this.txtMOTD);
+			this.tpServerProperties.Controls.Add(this.label16);
+			this.tpServerProperties.Controls.Add(this.txtViewDistance);
+			this.tpServerProperties.Controls.Add(this.label15);
+			this.tpServerProperties.Controls.Add(this.txtMaxPlayers);
+			this.tpServerProperties.Controls.Add(this.label14);
+			this.tpServerProperties.Controls.Add(this.txtGamemode);
+			this.tpServerProperties.Controls.Add(this.label13);
+			this.tpServerProperties.Controls.Add(this.txtPlayerIdleTimeout);
+			this.tpServerProperties.Controls.Add(this.label12);
+			this.tpServerProperties.Controls.Add(this.txtDifficulty);
+			this.tpServerProperties.Controls.Add(this.label11);
+			this.tpServerProperties.Controls.Add(this.txtResourcePack);
+			this.tpServerProperties.Controls.Add(this.label10);
+			this.tpServerProperties.Controls.Add(this.txtMaxBuildHeight);
+			this.tpServerProperties.Controls.Add(this.label9);
+			this.tpServerProperties.Controls.Add(this.txtServerIP);
+			this.tpServerProperties.Controls.Add(this.label8);
+			this.tpServerProperties.Controls.Add(this.txtLevelSeed);
+			this.tpServerProperties.Controls.Add(this.label7);
+			this.tpServerProperties.Controls.Add(this.txtLevelType);
+			this.tpServerProperties.Controls.Add(this.label6);
+			this.tpServerProperties.Controls.Add(this.txtGeneratorSettings);
+			this.tpServerProperties.Controls.Add(this.label5);
+			this.tpServerProperties.Location = new System.Drawing.Point(4, 22);
+			this.tpServerProperties.Name = "tpServerProperties";
+			this.tpServerProperties.Padding = new System.Windows.Forms.Padding(3);
+			this.tpServerProperties.Size = new System.Drawing.Size(926, 405);
+			this.tpServerProperties.TabIndex = 1;
+			this.tpServerProperties.Text = "Properties (server)";
+			this.tpServerProperties.UseVisualStyleBackColor = true;
+			// 
+			// btnSaveFile
+			// 
+			this.btnSaveFile.Location = new System.Drawing.Point(786, 371);
+			this.btnSaveFile.Name = "btnSaveFile";
+			this.btnSaveFile.Size = new System.Drawing.Size(132, 23);
+			this.btnSaveFile.TabIndex = 49;
+			this.btnSaveFile.Text = "Save to file";
+			this.btnSaveFile.UseVisualStyleBackColor = true;
+			this.btnSaveFile.Click += new System.EventHandler(this.BtnSaveFileClick);
+			// 
+			// btnReloadFile
+			// 
+			this.btnReloadFile.Location = new System.Drawing.Point(786, 342);
+			this.btnReloadFile.Name = "btnReloadFile";
+			this.btnReloadFile.Size = new System.Drawing.Size(132, 23);
+			this.btnReloadFile.TabIndex = 48;
+			this.btnReloadFile.Text = "Reload from file";
+			this.btnReloadFile.UseVisualStyleBackColor = true;
+			this.btnReloadFile.Click += new System.EventHandler(this.BtnReloadFileClick);
+			// 
+			// txtServerPort
+			// 
+			this.txtServerPort.Location = new System.Drawing.Point(118, 140);
+			this.txtServerPort.Name = "txtServerPort";
+			this.txtServerPort.Size = new System.Drawing.Size(507, 20);
+			this.txtServerPort.TabIndex = 47;
+			// 
+			// label19
+			// 
+			this.label19.AutoSize = true;
+			this.label19.Location = new System.Drawing.Point(50, 143);
+			this.label19.Name = "label19";
+			this.label19.Size = new System.Drawing.Size(62, 13);
+			this.label19.TabIndex = 46;
+			this.label19.Text = "Server port:";
+			// 
+			// chkGenerateStructures
+			// 
+			this.chkGenerateStructures.AutoSize = true;
+			this.chkGenerateStructures.Location = new System.Drawing.Point(631, 355);
+			this.chkGenerateStructures.Name = "chkGenerateStructures";
+			this.chkGenerateStructures.Size = new System.Drawing.Size(119, 17);
+			this.chkGenerateStructures.TabIndex = 43;
+			this.chkGenerateStructures.Text = "Generate-structures";
+			this.chkGenerateStructures.UseVisualStyleBackColor = true;
+			// 
+			// chkSpawnMonsters
+			// 
+			this.chkSpawnMonsters.AutoSize = true;
+			this.chkSpawnMonsters.Location = new System.Drawing.Point(631, 332);
+			this.chkSpawnMonsters.Name = "chkSpawnMonsters";
+			this.chkSpawnMonsters.Size = new System.Drawing.Size(104, 17);
+			this.chkSpawnMonsters.TabIndex = 42;
+			this.chkSpawnMonsters.Text = "Spawn-monsters";
+			this.chkSpawnMonsters.UseVisualStyleBackColor = true;
+			// 
+			// chkEnableCommandBlock
+			// 
+			this.chkEnableCommandBlock.AutoSize = true;
+			this.chkEnableCommandBlock.Location = new System.Drawing.Point(631, 310);
+			this.chkEnableCommandBlock.Name = "chkEnableCommandBlock";
+			this.chkEnableCommandBlock.Size = new System.Drawing.Size(137, 17);
+			this.chkEnableCommandBlock.TabIndex = 41;
+			this.chkEnableCommandBlock.Text = "Enable-command-block";
+			this.chkEnableCommandBlock.UseVisualStyleBackColor = true;
+			// 
+			// chkPVP
+			// 
+			this.chkPVP.AutoSize = true;
+			this.chkPVP.Location = new System.Drawing.Point(631, 287);
+			this.chkPVP.Name = "chkPVP";
+			this.chkPVP.Size = new System.Drawing.Size(47, 17);
+			this.chkPVP.TabIndex = 40;
+			this.chkPVP.Text = "PVP";
+			this.chkPVP.UseVisualStyleBackColor = true;
+			// 
+			// chkOnlineMode
+			// 
+			this.chkOnlineMode.AutoSize = true;
+			this.chkOnlineMode.Location = new System.Drawing.Point(631, 264);
+			this.chkOnlineMode.Name = "chkOnlineMode";
+			this.chkOnlineMode.Size = new System.Drawing.Size(85, 17);
+			this.chkOnlineMode.TabIndex = 39;
+			this.chkOnlineMode.Text = "Online-mode";
+			this.chkOnlineMode.UseVisualStyleBackColor = true;
+			// 
+			// chkHardcore
+			// 
+			this.chkHardcore.AutoSize = true;
+			this.chkHardcore.Location = new System.Drawing.Point(631, 241);
+			this.chkHardcore.Name = "chkHardcore";
+			this.chkHardcore.Size = new System.Drawing.Size(70, 17);
+			this.chkHardcore.TabIndex = 38;
+			this.chkHardcore.Text = "Hardcore";
+			this.chkHardcore.UseVisualStyleBackColor = true;
+			// 
+			// chkSnooperEnabled
+			// 
+			this.chkSnooperEnabled.AutoSize = true;
+			this.chkSnooperEnabled.Location = new System.Drawing.Point(631, 219);
+			this.chkSnooperEnabled.Name = "chkSnooperEnabled";
+			this.chkSnooperEnabled.Size = new System.Drawing.Size(107, 17);
+			this.chkSnooperEnabled.TabIndex = 37;
+			this.chkSnooperEnabled.Text = "Snooper-enabled";
+			this.chkSnooperEnabled.UseVisualStyleBackColor = true;
+			// 
+			// chkSpawnAnimals
+			// 
+			this.chkSpawnAnimals.AutoSize = true;
+			this.chkSpawnAnimals.Location = new System.Drawing.Point(631, 196);
+			this.chkSpawnAnimals.Name = "chkSpawnAnimals";
+			this.chkSpawnAnimals.Size = new System.Drawing.Size(97, 17);
+			this.chkSpawnAnimals.TabIndex = 36;
+			this.chkSpawnAnimals.Text = "Spawn-animals";
+			this.chkSpawnAnimals.UseVisualStyleBackColor = true;
+			// 
+			// chkWhiteListEnable
+			// 
+			this.chkWhiteListEnable.AutoSize = true;
+			this.chkWhiteListEnable.Location = new System.Drawing.Point(631, 173);
+			this.chkWhiteListEnable.Name = "chkWhiteListEnable";
+			this.chkWhiteListEnable.Size = new System.Drawing.Size(69, 17);
+			this.chkWhiteListEnable.TabIndex = 35;
+			this.chkWhiteListEnable.Text = "White-list";
+			this.chkWhiteListEnable.UseVisualStyleBackColor = true;
+			// 
+			// chkSpawnNPCs
+			// 
+			this.chkSpawnNPCs.AutoSize = true;
+			this.chkSpawnNPCs.Location = new System.Drawing.Point(631, 150);
+			this.chkSpawnNPCs.Name = "chkSpawnNPCs";
+			this.chkSpawnNPCs.Size = new System.Drawing.Size(89, 17);
+			this.chkSpawnNPCs.TabIndex = 34;
+			this.chkSpawnNPCs.Text = "Spawn-NPCs";
+			this.chkSpawnNPCs.UseVisualStyleBackColor = true;
+			// 
+			// chkForceGamemode
+			// 
+			this.chkForceGamemode.AutoSize = true;
+			this.chkForceGamemode.Location = new System.Drawing.Point(631, 128);
+			this.chkForceGamemode.Name = "chkForceGamemode";
+			this.chkForceGamemode.Size = new System.Drawing.Size(108, 17);
+			this.chkForceGamemode.TabIndex = 33;
+			this.chkForceGamemode.Text = "Force-gamemode";
+			this.chkForceGamemode.UseVisualStyleBackColor = true;
+			// 
+			// chkEnableRCON
+			// 
+			this.chkEnableRCON.AutoSize = true;
+			this.chkEnableRCON.Location = new System.Drawing.Point(631, 105);
+			this.chkEnableRCON.Name = "chkEnableRCON";
+			this.chkEnableRCON.Size = new System.Drawing.Size(83, 17);
+			this.chkEnableRCON.TabIndex = 32;
+			this.chkEnableRCON.Text = "Enable-rcon";
+			this.chkEnableRCON.UseVisualStyleBackColor = true;
+			// 
+			// chkAnnouncePlayerAchievements
+			// 
+			this.chkAnnouncePlayerAchievements.AutoSize = true;
+			this.chkAnnouncePlayerAchievements.Location = new System.Drawing.Point(631, 82);
+			this.chkAnnouncePlayerAchievements.Name = "chkAnnouncePlayerAchievements";
+			this.chkAnnouncePlayerAchievements.Size = new System.Drawing.Size(175, 17);
+			this.chkAnnouncePlayerAchievements.TabIndex = 31;
+			this.chkAnnouncePlayerAchievements.Text = "Announce-player-achievements";
+			this.chkAnnouncePlayerAchievements.UseVisualStyleBackColor = true;
+			// 
+			// chkAllowFlight
+			// 
+			this.chkAllowFlight.AutoSize = true;
+			this.chkAllowFlight.Location = new System.Drawing.Point(631, 59);
+			this.chkAllowFlight.Name = "chkAllowFlight";
+			this.chkAllowFlight.Size = new System.Drawing.Size(76, 17);
+			this.chkAllowFlight.TabIndex = 30;
+			this.chkAllowFlight.Text = "Allow-flight";
+			this.chkAllowFlight.UseVisualStyleBackColor = true;
+			// 
+			// txtLevelName
+			// 
+			this.txtLevelName.Location = new System.Drawing.Point(118, 62);
+			this.txtLevelName.Name = "txtLevelName";
+			this.txtLevelName.Size = new System.Drawing.Size(507, 20);
+			this.txtLevelName.TabIndex = 29;
+			// 
+			// label18
+			// 
+			this.label18.AutoSize = true;
+			this.label18.Location = new System.Drawing.Point(46, 65);
+			this.label18.Name = "label18";
+			this.label18.Size = new System.Drawing.Size(65, 13);
+			this.label18.TabIndex = 28;
+			this.label18.Text = "Level-name:";
+			// 
+			// chkEnableQuery
+			// 
+			this.chkEnableQuery.AutoSize = true;
+			this.chkEnableQuery.Location = new System.Drawing.Point(631, 37);
+			this.chkEnableQuery.Name = "chkEnableQuery";
+			this.chkEnableQuery.Size = new System.Drawing.Size(88, 17);
+			this.chkEnableQuery.TabIndex = 27;
+			this.chkEnableQuery.Text = "Enable-query";
+			this.chkEnableQuery.UseVisualStyleBackColor = true;
+			// 
+			// chkAllowNether
+			// 
+			this.chkAllowNether.AutoSize = true;
+			this.chkAllowNether.Location = new System.Drawing.Point(631, 14);
+			this.chkAllowNether.Name = "chkAllowNether";
+			this.chkAllowNether.Size = new System.Drawing.Size(84, 17);
+			this.chkAllowNether.TabIndex = 26;
+			this.chkAllowNether.Text = "Allow-nether";
+			this.chkAllowNether.UseVisualStyleBackColor = true;
+			// 
+			// txtOpPermissionLevel
+			// 
+			this.txtOpPermissionLevel.Location = new System.Drawing.Point(118, 37);
+			this.txtOpPermissionLevel.Name = "txtOpPermissionLevel";
+			this.txtOpPermissionLevel.Size = new System.Drawing.Size(507, 20);
+			this.txtOpPermissionLevel.TabIndex = 25;
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Location = new System.Drawing.Point(10, 40);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(102, 13);
+			this.label17.TabIndex = 24;
+			this.label17.Text = "OP-permission-level:";
+			// 
+			// txtMOTD
+			// 
+			this.txtMOTD.Location = new System.Drawing.Point(118, 375);
+			this.txtMOTD.Name = "txtMOTD";
+			this.txtMOTD.Size = new System.Drawing.Size(507, 20);
+			this.txtMOTD.TabIndex = 23;
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Location = new System.Drawing.Point(70, 378);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(42, 13);
+			this.label16.TabIndex = 22;
+			this.label16.Text = "MOTD:";
+			// 
+			// txtViewDistance
+			// 
+			this.txtViewDistance.Location = new System.Drawing.Point(118, 349);
+			this.txtViewDistance.Name = "txtViewDistance";
+			this.txtViewDistance.Size = new System.Drawing.Size(507, 20);
+			this.txtViewDistance.TabIndex = 21;
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Location = new System.Drawing.Point(36, 352);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(76, 13);
+			this.label15.TabIndex = 20;
+			this.label15.Text = "View-distance:";
+			// 
+			// txtMaxPlayers
+			// 
+			this.txtMaxPlayers.Location = new System.Drawing.Point(118, 323);
+			this.txtMaxPlayers.Name = "txtMaxPlayers";
+			this.txtMaxPlayers.Size = new System.Drawing.Size(507, 20);
+			this.txtMaxPlayers.TabIndex = 19;
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(46, 326);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(66, 13);
+			this.label14.TabIndex = 18;
+			this.label14.Text = "Max-players:";
+			// 
+			// txtGamemode
+			// 
+			this.txtGamemode.Location = new System.Drawing.Point(118, 297);
+			this.txtGamemode.Name = "txtGamemode";
+			this.txtGamemode.Size = new System.Drawing.Size(507, 20);
+			this.txtGamemode.TabIndex = 17;
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(48, 300);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(64, 13);
+			this.label13.TabIndex = 16;
+			this.label13.Text = "Gamemode:";
+			// 
+			// txtPlayerIdleTimeout
+			// 
+			this.txtPlayerIdleTimeout.Location = new System.Drawing.Point(118, 271);
+			this.txtPlayerIdleTimeout.Name = "txtPlayerIdleTimeout";
+			this.txtPlayerIdleTimeout.Size = new System.Drawing.Size(507, 20);
+			this.txtPlayerIdleTimeout.TabIndex = 15;
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(17, 274);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(95, 13);
+			this.label12.TabIndex = 14;
+			this.label12.Text = "Player-idle-timeout:";
+			// 
+			// txtDifficulty
+			// 
+			this.txtDifficulty.Location = new System.Drawing.Point(118, 245);
+			this.txtDifficulty.Name = "txtDifficulty";
+			this.txtDifficulty.Size = new System.Drawing.Size(507, 20);
+			this.txtDifficulty.TabIndex = 13;
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(62, 248);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(50, 13);
+			this.label11.TabIndex = 12;
+			this.label11.Text = "Difficulty:";
+			// 
+			// txtResourcePack
+			// 
+			this.txtResourcePack.Location = new System.Drawing.Point(118, 219);
+			this.txtResourcePack.Name = "txtResourcePack";
+			this.txtResourcePack.Size = new System.Drawing.Size(507, 20);
+			this.txtResourcePack.TabIndex = 11;
+			// 
+			// label10
+			// 
+			this.label10.AutoSize = true;
+			this.label10.Location = new System.Drawing.Point(29, 222);
+			this.label10.Name = "label10";
+			this.label10.Size = new System.Drawing.Size(83, 13);
+			this.label10.TabIndex = 10;
+			this.label10.Text = "Resource-pack:";
+			// 
+			// txtMaxBuildHeight
+			// 
+			this.txtMaxBuildHeight.Location = new System.Drawing.Point(118, 193);
+			this.txtMaxBuildHeight.Name = "txtMaxBuildHeight";
+			this.txtMaxBuildHeight.Size = new System.Drawing.Size(507, 20);
+			this.txtMaxBuildHeight.TabIndex = 9;
+			// 
+			// label9
+			// 
+			this.label9.AutoSize = true;
+			this.label9.Location = new System.Drawing.Point(25, 196);
+			this.label9.Name = "label9";
+			this.label9.Size = new System.Drawing.Size(87, 13);
+			this.label9.TabIndex = 8;
+			this.label9.Text = "Max-build-height:";
+			// 
+			// txtServerIP
+			// 
+			this.txtServerIP.Location = new System.Drawing.Point(118, 167);
+			this.txtServerIP.Name = "txtServerIP";
+			this.txtServerIP.Size = new System.Drawing.Size(507, 20);
+			this.txtServerIP.TabIndex = 7;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(58, 170);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(54, 13);
+			this.label8.TabIndex = 6;
+			this.label8.Text = "Server-IP:";
+			// 
+			// txtLevelSeed
+			// 
+			this.txtLevelSeed.Location = new System.Drawing.Point(118, 114);
+			this.txtLevelSeed.Name = "txtLevelSeed";
+			this.txtLevelSeed.Size = new System.Drawing.Size(507, 20);
+			this.txtLevelSeed.TabIndex = 5;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(50, 117);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(62, 13);
+			this.label7.TabIndex = 4;
+			this.label7.Text = "Level-seed:";
+			// 
+			// txtLevelType
+			// 
+			this.txtLevelType.Location = new System.Drawing.Point(118, 88);
+			this.txtLevelType.Name = "txtLevelType";
+			this.txtLevelType.Size = new System.Drawing.Size(507, 20);
+			this.txtLevelType.TabIndex = 3;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(53, 91);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(59, 13);
+			this.label6.TabIndex = 2;
+			this.label6.Text = "Level-type:";
+			// 
+			// txtGeneratorSettings
+			// 
+			this.txtGeneratorSettings.Location = new System.Drawing.Point(118, 11);
+			this.txtGeneratorSettings.Name = "txtGeneratorSettings";
+			this.txtGeneratorSettings.Size = new System.Drawing.Size(507, 20);
+			this.txtGeneratorSettings.TabIndex = 1;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(16, 14);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(96, 13);
+			this.label5.TabIndex = 0;
+			this.label5.Text = "Generator-settings:";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(934, 443);
+			this.ClientSize = new System.Drawing.Size(934, 455);
 			this.Controls.Add(this.tcContent);
 			this.Controls.Add(this.menuStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1107,6 +1685,8 @@ namespace JSONEdit
 			this.tpPermissions.PerformLayout();
 			this.grpPermissions.ResumeLayout(false);
 			this.grpPermissions.PerformLayout();
+			this.tpServerProperties.ResumeLayout(false);
+			this.tpServerProperties.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
