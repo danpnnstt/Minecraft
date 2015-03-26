@@ -11,7 +11,7 @@
 			"file": "JSONEdit/JSONFile.cs",
 			"settings":
 			{
-				"buffer_size": 10408,
+				"buffer_size": 10521,
 				"line_ending": "Windows"
 			}
 		},
@@ -24,10 +24,18 @@
 			}
 		},
 		{
+			"file": "JSONEdit/GroupForm.cs",
+			"settings":
+			{
+				"buffer_size": 1353,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "JSONEdit/MainForm.cs",
 			"settings":
 			{
-				"buffer_size": 12548,
+				"buffer_size": 17205,
 				"line_ending": "Windows"
 			}
 		},
@@ -40,9 +48,25 @@
 			}
 		}
 	],
-	"build_system": "",
+	"build_system": "Packages/C# Compile & Run/CSharpSingleFileBuild.sublime-build",
 	"build_system_choices":
 	[
+		[
+			[
+				[
+					"Packages/C# Compile & Run/CSharpSingleFileBuild.sublime-build",
+					""
+				],
+				[
+					"Packages/C# Compile & Run/CSharpSingleFileBuild.sublime-build",
+					"Run"
+				]
+			],
+			[
+				"Packages/C# Compile & Run/CSharpSingleFileBuild.sublime-build",
+				"Run"
+			]
+		]
 	],
 	"build_varint": "",
 	"command_palette":
@@ -81,7 +105,8 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit"
+		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit",
+		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit/JSONEdit"
 	],
 	"file_history":
 	[
@@ -129,15 +154,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 10408,
+						"buffer_size": 10521,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1351,
-								1351
+								0,
+								0
 							]
 						],
 						"settings":
@@ -165,8 +190,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								707,
+								707
 							]
 						],
 						"settings":
@@ -184,19 +209,19 @@
 				},
 				{
 					"buffer": 2,
-					"file": "JSONEdit/MainForm.cs",
-					"semi_transient": false,
+					"file": "JSONEdit/GroupForm.cs",
+					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 12548,
+						"buffer_size": 1353,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1074,
-								1074
+								0,
+								0
 							]
 						],
 						"settings":
@@ -213,6 +238,35 @@
 				},
 				{
 					"buffer": 3,
+					"file": "JSONEdit/MainForm.cs",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 17205,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								14192,
+								14192
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5040.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "sub_project.sublime-project",
 					"semi_transient": false,
 					"settings":
@@ -224,8 +278,8 @@
 						"selection":
 						[
 							[
-								109,
-								109
+								108,
+								108
 							]
 						],
 						"settings":
@@ -236,7 +290,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				}
 			]
@@ -273,11 +327,15 @@
 		]
 	},
 	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
 	},
-	"pinned_build_system": "",
+	"pinned_build_system": "Packages/C# Compile & Run/CSharpSingleFileBuild.sublime-build",
 	"project": "sub_project.sublime-project",
 	"replace":
 	{

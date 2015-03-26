@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "uuid": "2fba9c36-5618-43ea-aeb1-a7b8fb1da20a",
+    "name": "DanPnnStt",
+    "created": "2015-03-26 15:08:13 -0400",
+    "source": "Server",
+    "expires": "forever",
+    "reason": "Banned by an operator."
+  }
+]

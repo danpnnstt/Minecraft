@@ -41,7 +41,35 @@ namespace JSONEdit
 			SetCheckboxGroups();
 			LoadGroups();
 			LoadProperties();
-			ValidateGroups(); //This method will attempt to trace the parent paths for all groups to detect any errors.  If an error is found, the user is notified and the permissions tab is disabled.  To correct, the user must manually edit the file and correct the parent permissions.
+			ValidateGroups();
+			LoadUserFiles();
+		}
+		
+		private void LoadUserFiles()
+		{
+			string path1 = BASE_DIRECTORY + "whitelist.json";
+			string path2 = BASE_DIRECTORY + "ops.json";
+			try
+			{
+				if(!File.Exists(path1))
+				{
+					throw new Exception(path1);
+				}
+				if(!File.Exists(path2))
+				{
+					throw new Exception(path2);
+				}
+				JSONUserFile whitelist = new JSONUserFile();
+				JSONUserFile oplist = new JSONUserFile();
+				whitelist.ReadFile(path1);
+				oplist.ReadFile(path2);
+				Console.WriteLine();
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show("Error: failed to load " + Path.GetFileName(ex.Message) + ".  Please ensure minecraft is properly installed and try again.  Fatal error code 0x00000002", "Fatal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				this.Dispose();
+			}
 		}
 		
 		private void ValidateGroups()
@@ -365,7 +393,11 @@ namespace JSONEdit
 		
 		void BtnDeleteClick(object sender, EventArgs e)
 		{
-			
+			string key = cboGroup.SelectedItem.ToString();
+			File.Delete(groups[key].Value);
+			groups.Remove(key);
+			cboGroup.Items.Remove(key);
+			cboParent.Items.Remove(key);
 		}
 		
 		void BtnPlayersClick(object sender, EventArgs e)

@@ -141,6 +141,9 @@ namespace JSONEdit
 		private System.Windows.Forms.Label label19;
 		private System.Windows.Forms.Button btnSaveFile;
 		private System.Windows.Forms.Button btnReloadFile;
+		private System.Windows.Forms.TabPage tpOps;
+		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.Label label20;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -292,11 +295,15 @@ namespace JSONEdit
 			this.txtGeneratorSettings = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.tpOps = new System.Windows.Forms.TabPage();
+			this.label20 = new System.Windows.Forms.Label();
+			this.listBox1 = new System.Windows.Forms.ListBox();
 			this.menuStrip1.SuspendLayout();
 			this.tcContent.SuspendLayout();
 			this.tpPermissions.SuspendLayout();
 			this.grpPermissions.SuspendLayout();
 			this.tpServerProperties.SuspendLayout();
+			this.tpOps.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -328,6 +335,7 @@ namespace JSONEdit
 			// 
 			this.tcContent.Controls.Add(this.tpPermissions);
 			this.tcContent.Controls.Add(this.tpServerProperties);
+			this.tcContent.Controls.Add(this.tpOps);
 			this.tcContent.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tcContent.Location = new System.Drawing.Point(0, 24);
 			this.tcContent.Name = "tcContent";
@@ -1131,7 +1139,6 @@ namespace JSONEdit
 			// 
 			// btnDelete
 			// 
-			this.btnDelete.Enabled = false;
 			this.btnDelete.Location = new System.Drawing.Point(366, 67);
 			this.btnDelete.Name = "btnDelete";
 			this.btnDelete.Size = new System.Drawing.Size(75, 23);
@@ -1664,6 +1671,35 @@ namespace JSONEdit
 			this.label5.TabIndex = 0;
 			this.label5.Text = "Generator-settings:";
 			// 
+			// tpOps
+			// 
+			this.tpOps.Controls.Add(this.listBox1);
+			this.tpOps.Controls.Add(this.label20);
+			this.tpOps.Location = new System.Drawing.Point(4, 22);
+			this.tpOps.Name = "tpOps";
+			this.tpOps.Padding = new System.Windows.Forms.Padding(3);
+			this.tpOps.Size = new System.Drawing.Size(926, 405);
+			this.tpOps.TabIndex = 2;
+			this.tpOps.Text = "OP Permissions";
+			this.tpOps.UseVisualStyleBackColor = true;
+			// 
+			// label20
+			// 
+			this.label20.AutoSize = true;
+			this.label20.Location = new System.Drawing.Point(8, 16);
+			this.label20.Name = "label20";
+			this.label20.Size = new System.Drawing.Size(214, 13);
+			this.label20.TabIndex = 0;
+			this.label20.Text = "List of players currently OP\'ed on the server:";
+			// 
+			// listBox1
+			// 
+			this.listBox1.FormattingEnabled = true;
+			this.listBox1.Location = new System.Drawing.Point(8, 43);
+			this.listBox1.Name = "listBox1";
+			this.listBox1.Size = new System.Drawing.Size(394, 95);
+			this.listBox1.TabIndex = 1;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1687,6 +1723,8 @@ namespace JSONEdit
 			this.grpPermissions.PerformLayout();
 			this.tpServerProperties.ResumeLayout(false);
 			this.tpServerProperties.PerformLayout();
+			this.tpOps.ResumeLayout(false);
+			this.tpOps.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

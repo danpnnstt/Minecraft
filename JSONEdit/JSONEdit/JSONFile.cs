@@ -50,6 +50,122 @@ namespace JSONEdit
 		public virtual void GetObjectData(SerializationInfo info, StreamingContext context) { }
 	}
 	
+	public class JSONUserFile : JSONFile
+	{
+		public string[] UUID
+		{
+			get;
+			private set;
+		}
+		
+		public string[] Name
+		{
+			get;
+			private set;
+		}
+		
+		public string[] OpLevel
+		{
+			get;
+			private set;
+		}
+		
+		public JSONUserFile()
+		{
+			UUID = Name = OpLevel = null;
+		}
+		
+		protected JSONUserFile(SerializationInfo info, StreamingContext context) : this()
+		{
+			UUID = Name = OpLevel = null;
+			string[] arr1 = (string[])info.GetValue("UUID", typeof(string[]));
+			string[] arr2 = (string[])info.GetValue("Name", typeof(string[]));
+			string[] arr3 = (string[])info.GetValue("OpLevel", typeof(string[]));
+			if(arr1.Length > 0)
+			{
+				this.UUID = new string[arr1.Length];
+				Array.Copy(arr1, this.UUID, this.UUID.Length);
+			}
+			if(arr2.Length > 0)
+			{
+				this.Name = new string[arr2.Length];
+				Array.Copy(arr2, this.Name, this.Name.Length);
+			}
+			if(arr3.Length > 0)
+			{
+				this.OpLevel = new string[arr3.Length];
+				Array.Copy(arr3, this.OpLevel, this.OpLevel.Length);
+			}
+		}
+		
+		public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
+		{
+			if(info == null) throw new System.ArgumentNullException("info");
+			info.AddValue("UUID", UUID, typeof(string[]));
+			info.AddValue("Name", Name, typeof(string[]));
+			info.AddValue("OpLevel", OpLevel, typeof(string[]));
+		}
+		
+		public override bool ReadFile(string filePath)
+		{
+			try
+			{
+				string line = "";
+				using(FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+				{
+					using(StreamReader reader = new StreamReader(stream))
+					{
+						while(!reader.EndOfStream)
+						{
+							line += reader.ReadLine();
+						}
+					}
+				}
+				JSONUserFile jgf = JsonConvert.DeserializeObject<JSONUserFile>(line);
+				if(jgf.UUID.Length > 0)
+				{
+					this.UUID = new string[jgf.UUID.Length];
+					Array.Copy(jgf.UUID, this.UUID, this.UUID.Length);
+				}
+				if(jgf.Name.Length > 0)
+				{
+					this.Name = new string[jgf.Name.Length];
+					Array.Copy(jgf.Name, this.Name, this.Name.Length);
+				}
+				if(jgf.OpLevel.Length > 0)
+				{
+					this.OpLevel = new string[jgf.OpLevel.Length];
+					Array.Copy(jgf.OpLevel, this.OpLevel, this.OpLevel.Length);
+				}
+				return true;
+			}
+			catch(Exception e)
+			{
+				return false;
+			}
+		}
+		
+		public override bool SaveFile(string filePath)
+		{
+			try
+			{
+				//string json = JsonConvert.SerializeObject(UserObject);
+//				using(FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+//				{
+//					using(StreamWriter writer = new StreamWriter(stream))
+//					{
+//						writer.Write(json);
+//					}
+//				}
+				return true;
+			}
+			catch(Exception ex)
+			{
+				return false;
+			}
+		}
+	}
+	
 	public class ServerPropertiesFile
 	{
 		private Dictionary<string, string> properties;
@@ -435,7 +551,6 @@ namespace JSONEdit
 					perms = new string[]{};
 				}
 				string json = JsonConvert.SerializeObject(this);
-				Console.WriteLine(json);
 				using(FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
 				{
 					using(StreamWriter writer = new StreamWriter(stream))
