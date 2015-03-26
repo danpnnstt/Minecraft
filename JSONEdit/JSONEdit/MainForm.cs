@@ -461,7 +461,7 @@ namespace JSONEdit
 			}
 			foreach(string k in keysC)
 			{
-				propertiesFile[k] = propertyBoxes[k].Checked.ToString();
+				propertiesFile[k] = propertyBoxes[k].Checked.ToString().ToLower();
 			}
 			propertiesFile.SaveFile(BASE_DIRECTORY + "server.properties");
 		}
