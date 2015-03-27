@@ -27,7 +27,8 @@ namespace JSONEdit
 			//Application.Run(new MainForm());
             try
             {
-                MainForm.BASE_DIRECTORY = args[0];
+                //MainForm.BASE_DIRECTORY = args[0];
+                MainForm.BASE_DIRECTORY = @"C:\Users\dhartenbach\My Documents\GitHub\Minecraft\GameBackup\minecraft\";
             }
             catch
             {

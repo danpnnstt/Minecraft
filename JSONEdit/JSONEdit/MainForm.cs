@@ -26,11 +26,14 @@ namespace JSONEdit
 		private Dictionary<string, CheckBox> propertyBoxes;
 		private Dictionary<string, TextBox> propertyTextfields;
 		private Dictionary<string, CheckBox> permissionBoxes;
-		
+		private JSONUserFile whitelist;
+		private JSONUserFile oplist;
 		
 		public MainForm()
 		{
 			InitializeComponent();
+			whitelist = new JSONUserFile();
+			oplist = new JSONUserFile();
 			propertiesFile = new ServerPropertiesFile();
 			propertyTextfields = new Dictionary<string, TextBox>();
 			propertyBoxes = new Dictionary<string, CheckBox>();
@@ -59,16 +62,38 @@ namespace JSONEdit
 				{
 					throw new Exception(path2);
 				}
-				JSONUserFile whitelist = new JSONUserFile();
-				JSONUserFile oplist = new JSONUserFile();
 				whitelist.ReadFile(path1);
 				oplist.ReadFile(path2);
-				Console.WriteLine();
+				FillOpUsersList();
+				FillWhiteListUsers();
 			}
 			catch(Exception ex)
 			{
 				MessageBox.Show("Error: failed to load " + Path.GetFileName(ex.Message) + ".  Please ensure minecraft is properly installed and try again.  Fatal error code 0x00000002", "Fatal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				this.Dispose();
+			}
+		}
+		
+		private void FillOpUsersList()
+		{
+			lstOpUsers.Items.Clear();
+			string[] uuid = oplist.UUID;
+			string[] names = oplist.Name;
+			int[] level = oplist.OpLevel;
+			for(int idx = 0; idx < uuid.Length; idx++)
+			{
+				lstOpUsers.Items.Add(uuid[idx] + " : " + names[idx] + " : " + level[idx]);
+			}
+		}
+		
+		private void FillWhiteListUsers()
+		{
+			lstWhitelistUsers.Items.Clear();
+			string[] uuid = whitelist.UUID;
+			string[] names = whitelist.Name;
+			for(int idx = 0; idx < uuid.Length; idx++)
+			{
+				lstWhitelistUsers.Items.Add(uuid[idx] + " : " + names[idx]);
 			}
 		}
 		
@@ -496,6 +521,31 @@ namespace JSONEdit
 				propertiesFile[k] = propertyBoxes[k].Checked.ToString().ToLower();
 			}
 			propertiesFile.SaveFile(BASE_DIRECTORY + "server.properties");
+		}
+		
+		void BtnAddOpUserClick(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void BtnEditOpUserClick(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void BtnDeleteOpUserClick(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void BtnAddWhitelistUserClick(object sender, EventArgs e)
+		{
+			
+		}
+		
+		void BtnDeleteWhitelistUserClick(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }

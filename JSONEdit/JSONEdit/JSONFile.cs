@@ -50,6 +50,60 @@ namespace JSONEdit
 		public virtual void GetObjectData(SerializationInfo info, StreamingContext context) { }
 	}
 	
+	public class UserFile : ISerializable
+	{
+		public string UUID
+		{
+			get;
+			set;
+		}
+		
+		public string Name
+		{
+			get;
+			set;
+		}
+		
+		public int Level
+		{
+			get;
+			set;
+		}
+		
+		internal UserFile(string uuid, string name, int level = -1)
+		{
+			UUID = uuid;
+			Name = name;
+			Level = level;
+		}
+		
+		private UserFile(SerializationInfo info, StreamingContext context)
+		{
+			UUID = Name = null;
+			Level = -1;
+			UUID = (string)info.GetValue("uuid", typeof(string));
+			Name = (string)info.GetValue("name", typeof(string));
+			try
+			{
+				Level = (int)info.GetValue("level", typeof(int));
+			}
+			catch { }
+		}
+		
+		[SecurityPermission(SecurityAction.LinkDemand,
+            Flags = SecurityPermissionFlag.SerializationFormatter)]
+		public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
+		{
+			if(info == null) throw new ArgumentNullException();
+			info.AddValue("uuid", UUID, typeof(string));
+			info.AddValue("name", Name, typeof(string));
+			if(Level != -1)
+			{
+				info.AddValue("level", Level, typeof(int));
+			}
+		}
+	}
+	
 	public class JSONUserFile : JSONFile
 	{
 		public string[] UUID
@@ -64,7 +118,7 @@ namespace JSONEdit
 			private set;
 		}
 		
-		public string[] OpLevel
+		public int[] OpLevel
 		{
 			get;
 			private set;
@@ -72,15 +126,17 @@ namespace JSONEdit
 		
 		public JSONUserFile()
 		{
-			UUID = Name = OpLevel = null;
+			UUID = Name = null;
+			OpLevel = null;
 		}
 		
-		protected JSONUserFile(SerializationInfo info, StreamingContext context) : this()
+		private JSONUserFile(SerializationInfo info, StreamingContext context)
 		{
-			UUID = Name = OpLevel = null;
-			string[] arr1 = (string[])info.GetValue("UUID", typeof(string[]));
-			string[] arr2 = (string[])info.GetValue("Name", typeof(string[]));
-			string[] arr3 = (string[])info.GetValue("OpLevel", typeof(string[]));
+			UUID = Name = null;
+			OpLevel = null;
+			string[] arr1 = (string[])info.GetValue("uuid", typeof(string[]));
+			string[] arr2 = (string[])info.GetValue("name", typeof(string[]));
+			int[] arr3 = (int[])info.GetValue("level", typeof(int[]));
 			if(arr1.Length > 0)
 			{
 				this.UUID = new string[arr1.Length];
@@ -93,17 +149,17 @@ namespace JSONEdit
 			}
 			if(arr3.Length > 0)
 			{
-				this.OpLevel = new string[arr3.Length];
+				this.OpLevel = new int[arr3.Length];
 				Array.Copy(arr3, this.OpLevel, this.OpLevel.Length);
 			}
 		}
 		
-		public virtual void GetObjectData(SerializationInfo info, StreamingContext context)
+		public override void GetObjectData(SerializationInfo info, StreamingContext context)
 		{
 			if(info == null) throw new System.ArgumentNullException("info");
-			info.AddValue("UUID", UUID, typeof(string[]));
-			info.AddValue("Name", Name, typeof(string[]));
-			info.AddValue("OpLevel", OpLevel, typeof(string[]));
+			info.AddValue("uuid", UUID, typeof(string[]));
+			info.AddValue("name", Name, typeof(string[]));
+			info.AddValue("level", OpLevel, typeof(int[]));
 		}
 		
 		public override bool ReadFile(string filePath)
@@ -111,31 +167,56 @@ namespace JSONEdit
 			try
 			{
 				string line = "";
+				List<string> toConvert = new List<string>();
 				using(FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
 				{
 					using(StreamReader reader = new StreamReader(stream))
 					{
 						while(!reader.EndOfStream)
 						{
-							line += reader.ReadLine();
+							string chars = ((char)reader.Read()).ToString();
+							if(chars == "]" || chars == "["  || string.IsNullOrWhiteSpace(chars))
+							{
+								//skip line
+							}
+							else if(chars.Contains("}"))
+							{
+								line += chars;
+								line = line.Trim(',');
+								toConvert.Add(line);
+								line = "";
+							}
+							else
+							{
+								line += chars;
+							}
 						}
 					}
 				}
-				JSONUserFile jgf = JsonConvert.DeserializeObject<JSONUserFile>(line);
-				if(jgf.UUID.Length > 0)
+				List<string> uuid = new List<string>();
+				List<string> name = new List<string>();
+				List<int> op = new List<int>();
+				foreach(string l in toConvert)
 				{
-					this.UUID = new string[jgf.UUID.Length];
-					Array.Copy(jgf.UUID, this.UUID, this.UUID.Length);
+					UserFile uf = JsonConvert.DeserializeObject<UserFile>(l);
+					uuid.Add(uf.UUID);
+					name.Add(uf.Name);
+					if(uf.Level != -1)
+					{
+						op.Add(uf.Level);
+					}
 				}
-				if(jgf.Name.Length > 0)
+				if(uuid.Count > 0)
 				{
-					this.Name = new string[jgf.Name.Length];
-					Array.Copy(jgf.Name, this.Name, this.Name.Length);
+					this.UUID = uuid.ToArray();
 				}
-				if(jgf.OpLevel.Length > 0)
+				if(name.Count > 0)
 				{
-					this.OpLevel = new string[jgf.OpLevel.Length];
-					Array.Copy(jgf.OpLevel, this.OpLevel, this.OpLevel.Length);
+					this.Name = name.ToArray();
+				}
+				if(op.Count > 0)
+				{
+					this.OpLevel = op.ToArray();
 				}
 				return true;
 			}
@@ -149,14 +230,39 @@ namespace JSONEdit
 		{
 			try
 			{
-				//string json = JsonConvert.SerializeObject(UserObject);
-//				using(FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-//				{
-//					using(StreamWriter writer = new StreamWriter(stream))
-//					{
-//						writer.Write(json);
-//					}
-//				}
+				List<UserFile> files = new List<UserFile>();
+				for(int idx = 0; idx < UUID.Length; idx++)
+				{
+					if(OpLevel != null)
+					{
+						files.Add(new UserFile(UUID[idx], Name[idx], OpLevel[idx]));
+					}
+					else
+					{
+						files.Add(new UserFile(UUID[idx], Name[idx]));
+					}
+				}
+				List<string> jsonStrs = new List<string>();
+				foreach(UserFile f in files)
+				{
+					jsonStrs.Add(JsonConvert.SerializeObject(f));
+				}
+				string json = "[";
+				foreach(string j in jsonStrs)
+				{
+					json += j;
+					json += ",";
+				}
+				json = json.Trim(',');
+				json += "]";
+				File.WriteAllText(Environment.CurrentDirectory + "\\test.txt", json);
+				using(FileStream stream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+				{
+					using(StreamWriter writer = new StreamWriter(stream))
+					{
+						writer.Write(json);
+					}
+				}
 				return true;
 			}
 			catch(Exception ex)

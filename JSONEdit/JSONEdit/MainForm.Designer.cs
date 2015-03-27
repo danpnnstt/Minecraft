@@ -142,8 +142,15 @@ namespace JSONEdit
 		private System.Windows.Forms.Button btnSaveFile;
 		private System.Windows.Forms.Button btnReloadFile;
 		private System.Windows.Forms.TabPage tpOps;
-		private System.Windows.Forms.ListBox listBox1;
+		private System.Windows.Forms.ListBox lstOpUsers;
 		private System.Windows.Forms.Label label20;
+		private System.Windows.Forms.ListBox lstWhitelistUsers;
+		private System.Windows.Forms.Label label21;
+		private System.Windows.Forms.Button btnDeleteOpUser;
+		private System.Windows.Forms.Button btnEditOpUser;
+		private System.Windows.Forms.Button btnAddOpUser;
+		private System.Windows.Forms.Button btnDeleteWhitelistUser;
+		private System.Windows.Forms.Button btnAddWhitelistUser;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -294,10 +301,17 @@ namespace JSONEdit
 			this.label6 = new System.Windows.Forms.Label();
 			this.txtGeneratorSettings = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
-			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.tpOps = new System.Windows.Forms.TabPage();
+			this.btnDeleteWhitelistUser = new System.Windows.Forms.Button();
+			this.btnAddWhitelistUser = new System.Windows.Forms.Button();
+			this.btnDeleteOpUser = new System.Windows.Forms.Button();
+			this.btnEditOpUser = new System.Windows.Forms.Button();
+			this.btnAddOpUser = new System.Windows.Forms.Button();
+			this.lstWhitelistUsers = new System.Windows.Forms.ListBox();
+			this.label21 = new System.Windows.Forms.Label();
+			this.lstOpUsers = new System.Windows.Forms.ListBox();
 			this.label20 = new System.Windows.Forms.Label();
-			this.listBox1 = new System.Windows.Forms.ListBox();
+			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
 			this.menuStrip1.SuspendLayout();
 			this.tcContent.SuspendLayout();
 			this.tpPermissions.SuspendLayout();
@@ -1673,7 +1687,14 @@ namespace JSONEdit
 			// 
 			// tpOps
 			// 
-			this.tpOps.Controls.Add(this.listBox1);
+			this.tpOps.Controls.Add(this.btnDeleteWhitelistUser);
+			this.tpOps.Controls.Add(this.btnAddWhitelistUser);
+			this.tpOps.Controls.Add(this.btnDeleteOpUser);
+			this.tpOps.Controls.Add(this.btnEditOpUser);
+			this.tpOps.Controls.Add(this.btnAddOpUser);
+			this.tpOps.Controls.Add(this.lstWhitelistUsers);
+			this.tpOps.Controls.Add(this.label21);
+			this.tpOps.Controls.Add(this.lstOpUsers);
 			this.tpOps.Controls.Add(this.label20);
 			this.tpOps.Location = new System.Drawing.Point(4, 22);
 			this.tpOps.Name = "tpOps";
@@ -1683,6 +1704,81 @@ namespace JSONEdit
 			this.tpOps.Text = "OP Permissions";
 			this.tpOps.UseVisualStyleBackColor = true;
 			// 
+			// btnDeleteWhitelistUser
+			// 
+			this.btnDeleteWhitelistUser.Location = new System.Drawing.Point(536, 144);
+			this.btnDeleteWhitelistUser.Name = "btnDeleteWhitelistUser";
+			this.btnDeleteWhitelistUser.Size = new System.Drawing.Size(107, 23);
+			this.btnDeleteWhitelistUser.TabIndex = 8;
+			this.btnDeleteWhitelistUser.Text = "Delete user";
+			this.btnDeleteWhitelistUser.UseVisualStyleBackColor = true;
+			this.btnDeleteWhitelistUser.Click += new System.EventHandler(this.BtnDeleteWhitelistUserClick);
+			// 
+			// btnAddWhitelistUser
+			// 
+			this.btnAddWhitelistUser.Location = new System.Drawing.Point(423, 144);
+			this.btnAddWhitelistUser.Name = "btnAddWhitelistUser";
+			this.btnAddWhitelistUser.Size = new System.Drawing.Size(107, 23);
+			this.btnAddWhitelistUser.TabIndex = 7;
+			this.btnAddWhitelistUser.Text = "Add user";
+			this.btnAddWhitelistUser.UseVisualStyleBackColor = true;
+			this.btnAddWhitelistUser.Click += new System.EventHandler(this.BtnAddWhitelistUserClick);
+			// 
+			// btnDeleteOpUser
+			// 
+			this.btnDeleteOpUser.Location = new System.Drawing.Point(234, 144);
+			this.btnDeleteOpUser.Name = "btnDeleteOpUser";
+			this.btnDeleteOpUser.Size = new System.Drawing.Size(107, 23);
+			this.btnDeleteOpUser.TabIndex = 6;
+			this.btnDeleteOpUser.Text = "Delete user";
+			this.btnDeleteOpUser.UseVisualStyleBackColor = true;
+			this.btnDeleteOpUser.Click += new System.EventHandler(this.BtnDeleteOpUserClick);
+			// 
+			// btnEditOpUser
+			// 
+			this.btnEditOpUser.Location = new System.Drawing.Point(121, 144);
+			this.btnEditOpUser.Name = "btnEditOpUser";
+			this.btnEditOpUser.Size = new System.Drawing.Size(107, 23);
+			this.btnEditOpUser.TabIndex = 5;
+			this.btnEditOpUser.Text = "Edit user";
+			this.btnEditOpUser.UseVisualStyleBackColor = true;
+			this.btnEditOpUser.Click += new System.EventHandler(this.BtnEditOpUserClick);
+			// 
+			// btnAddOpUser
+			// 
+			this.btnAddOpUser.Location = new System.Drawing.Point(8, 144);
+			this.btnAddOpUser.Name = "btnAddOpUser";
+			this.btnAddOpUser.Size = new System.Drawing.Size(107, 23);
+			this.btnAddOpUser.TabIndex = 4;
+			this.btnAddOpUser.Text = "Add user";
+			this.btnAddOpUser.UseVisualStyleBackColor = true;
+			this.btnAddOpUser.Click += new System.EventHandler(this.BtnAddOpUserClick);
+			// 
+			// lstWhitelistUsers
+			// 
+			this.lstWhitelistUsers.FormattingEnabled = true;
+			this.lstWhitelistUsers.Location = new System.Drawing.Point(423, 43);
+			this.lstWhitelistUsers.Name = "lstWhitelistUsers";
+			this.lstWhitelistUsers.Size = new System.Drawing.Size(365, 95);
+			this.lstWhitelistUsers.TabIndex = 3;
+			// 
+			// label21
+			// 
+			this.label21.AutoSize = true;
+			this.label21.Location = new System.Drawing.Point(423, 16);
+			this.label21.Name = "label21";
+			this.label21.Size = new System.Drawing.Size(234, 13);
+			this.label21.TabIndex = 2;
+			this.label21.Text = "List of players currently whitelisted on the server:";
+			// 
+			// lstOpUsers
+			// 
+			this.lstOpUsers.FormattingEnabled = true;
+			this.lstOpUsers.Location = new System.Drawing.Point(8, 43);
+			this.lstOpUsers.Name = "lstOpUsers";
+			this.lstOpUsers.Size = new System.Drawing.Size(365, 95);
+			this.lstOpUsers.TabIndex = 1;
+			// 
 			// label20
 			// 
 			this.label20.AutoSize = true;
@@ -1691,14 +1787,6 @@ namespace JSONEdit
 			this.label20.Size = new System.Drawing.Size(214, 13);
 			this.label20.TabIndex = 0;
 			this.label20.Text = "List of players currently OP\'ed on the server:";
-			// 
-			// listBox1
-			// 
-			this.listBox1.FormattingEnabled = true;
-			this.listBox1.Location = new System.Drawing.Point(8, 43);
-			this.listBox1.Name = "listBox1";
-			this.listBox1.Size = new System.Drawing.Size(394, 95);
-			this.listBox1.TabIndex = 1;
 			// 
 			// MainForm
 			// 
