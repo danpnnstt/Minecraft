@@ -1,47 +1,25 @@
-[16:18:44] [Server thread/INFO]: Starting minecraft server version 1.7.10
-[16:18:44] [Server thread/WARN]: To start the server with more ram, launch it as "java -Xmx1024M -Xms1024M -jar minecraft_server.jar"
-[16:18:51] [Server thread/INFO]: Loading properties
-[16:18:51] [Server thread/INFO]: Default game type: SURVIVAL
-[16:18:51] [Server thread/INFO]: Generating keypair
-[16:18:52] [Server thread/INFO]: Starting Minecraft server on 212.1.213.58:25565
-[16:18:54] [Server thread/INFO]: Preparing level "world"
-[16:18:55] [Server thread/INFO]: Preparing start region for level 0
-[16:18:56] [Server thread/INFO]: Preparing spawn area: 0%
-[16:18:57] [Server thread/INFO]: Preparing spawn area: 6%
-[16:18:58] [Server thread/INFO]: Preparing spawn area: 16%
-[16:18:59] [Server thread/INFO]: Preparing spawn area: 31%
-[16:19:00] [Server thread/INFO]: Preparing spawn area: 48%
-[16:19:01] [Server thread/INFO]: Preparing spawn area: 63%
-[16:19:02] [Server thread/INFO]: Preparing spawn area: 82%
-[16:19:03] [Server thread/INFO]: Done (9.583s)! For help, type "help" or "?"
-[16:19:08] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2482ms behind, skipping 49 tick(s)
-[16:19:13] [Server thread/INFO]: Unknown command. Try /help for a list of commands
-[16:19:48] [Server thread/INFO]: --- Showing help page 1 of 12 (/help <page>) ---
-[16:19:48] [Server thread/INFO]: /achievement give <stat_name> [player]
-[16:19:48] [Server thread/INFO]: /addperm [perm] [groupname]
-[16:19:48] [Server thread/INFO]: /addplayer [username] [groupname]
-[16:19:48] [Server thread/INFO]: /adduuid [UUID] [Group]
-[16:19:48] [Server thread/INFO]: /backup
-[16:19:48] [Server thread/INFO]: /ban <name> [reason ...]
-[16:19:48] [Server thread/INFO]: /ban-ip <address|name> [reason ...]
-[16:19:57] [Server thread/WARN]: Can't keep up! Did the system time change, or is the server overloaded? Running 2286ms behind, skipping 45 tick(s)
-[16:19:59] [User Authenticator #1/INFO]: UUID of player DanPnnStt is 2fba9c36-5618-43ea-aeb1-a7b8fb1da20a
-[16:20:00] [Server thread/INFO]: DanPnnStt[/161.38.221.245:51179] logged in with entity id 326 at (258.2558894611685, 62.0, 190.56416480514457)
-[16:20:00] [Server thread/INFO]: ?c[Admin]?r DanPnnStt joined the game
-[16:20:40] [Server thread/INFO]: <?c[Admin]?r DanPnnStt> give danpnnstt torch 64
-[16:20:57] [Server thread/INFO]: <?c[Admin]?r DanPnnStt> \give danpnnstt torch 64
-[16:21:05] [Server thread/INFO]: [DanPnnStt: Given [Torch] * 64 to DanPnnStt]
-[16:23:01] [Server thread/INFO]: [DanPnnStt: Set own game mode to Adventure Mode]
-[16:23:14] [Server thread/INFO]: [DanPnnStt: Set own game mode to Creative Mode]
-[16:28:49] [Server thread/INFO]: Reloaded the MOTD from file
-[16:30:21] [Server thread/INFO]: Reloaded the MOTD from file
-[16:32:06] [Server thread/INFO]: Kicked DanPnnStt from the game
-[16:32:06] [Server thread/INFO]: DanPnnStt lost connection: TextComponent{text='Kicked by an operator.', siblings=[], style=Style{hasParent=false, color=null, bold=null, italic=null, underlined=null, obfuscated=null, clickEvent=null, hoverEvent=null}}
-[16:32:06] [Server thread/INFO]: ?c[Admin]?r DanPnnStt left the game
-[16:32:16] [Server thread/INFO]: Stopping the server
-[16:32:16] [Server thread/INFO]: Stopping server
-[16:32:16] [Server thread/INFO]: Saving players
-[16:32:16] [Server thread/INFO]: Saving worlds
-[16:32:16] [Server thread/INFO]: Saving chunks for level 'world'/Overworld
-[16:32:16] [Server thread/INFO]: Saving chunks for level 'world'/Nether
-[16:32:16] [Server thread/INFO]: Saving chunks for level 'world'/The End
+[10:43:52] [Server thread/INFO]: Starting minecraft server version 1.7.10
+[10:43:52] [Server thread/WARN]: To start the server with more ram, launch it as "java -Xmx1024M -Xms1024M -jar minecraft_server.jar"
+[10:44:12] [Server thread/INFO]: Loading properties
+[10:44:12] [Server thread/INFO]: Default game type: SURVIVAL
+[10:44:12] [Server thread/INFO]: Generating keypair
+[10:44:13] [Server thread/INFO]: Starting Minecraft server on 212.1.213.58:25565
+[10:44:18] [Server thread/INFO]: Preparing level "world"
+[10:44:20] [Server thread/INFO]: Preparing start region for level 0
+[10:44:21] [Server thread/INFO]: Preparing spawn area: 3%
+[10:44:22] [Server thread/INFO]: Preparing spawn area: 9%
+[10:44:23] [Server thread/INFO]: Preparing spawn area: 25%
+[10:44:24] [Server thread/INFO]: Preparing spawn area: 51%
+[10:44:25] [Server thread/INFO]: Preparing spawn area: 80%
+[10:44:26] [Server thread/INFO]: Done (8.008s)! For help, type "help" or "?"
+[10:46:09] [User Authenticator #1/INFO]: UUID of player DanPnnStt is 2fba9c36-5618-43ea-aeb1-a7b8fb1da20a
+[10:46:11] [Server thread/INFO]: DanPnnStt[/161.38.221.245:52548] logged in with entity id 253 at (256.48933381084885, 62.0, 189.41603496947386)
+[10:46:11] [Server thread/INFO]: ?c[Admin]?r DanPnnStt joined the game
+[10:46:25] [Server thread/INFO]: [DanPnnStt: Given [Wooden Axe] * 1 to DanPnnStt]
+[10:46:50] [Server thread/INFO]: [DanPnnStt: Stopping the server]
+[10:46:50] [Server thread/INFO]: Stopping server
+[10:46:50] [Server thread/INFO]: Saving players
+[10:46:50] [Server thread/INFO]: Saving worlds
+[10:46:50] [Server thread/INFO]: Saving chunks for level 'world'/Overworld
+[10:46:50] [Server thread/INFO]: Saving chunks for level 'world'/Nether
+[10:46:50] [Server thread/INFO]: Saving chunks for level 'world'/The End

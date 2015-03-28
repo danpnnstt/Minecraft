@@ -80,6 +80,7 @@ namespace JSONEdit
 			string[] uuid = oplist.UUID;
 			string[] names = oplist.Name;
 			int[] level = oplist.OpLevel;
+			if(uuid == null) return;
 			for(int idx = 0; idx < uuid.Length; idx++)
 			{
 				lstOpUsers.Items.Add(uuid[idx] + " : " + names[idx] + " : " + level[idx]);
@@ -91,6 +92,7 @@ namespace JSONEdit
 			lstWhitelistUsers.Items.Clear();
 			string[] uuid = whitelist.UUID;
 			string[] names = whitelist.Name;
+			if(uuid == null) return;
 			for(int idx = 0; idx < uuid.Length; idx++)
 			{
 				lstWhitelistUsers.Items.Add(uuid[idx] + " : " + names[idx]);
@@ -525,27 +527,82 @@ namespace JSONEdit
 		
 		void BtnAddOpUserClick(object sender, EventArgs e)
 		{
-			
+			PlayerForm pf = new PlayerForm(oplist);
+			if(pf.ShowDialog() == DialogResult.OK)
+			{
+				/*
+				 * Use the command below to turn UUIDs into player names.
+				 * Use the same logic as before to split into a dictionary, except the value
+				 * parameter will be another dictionary with keys 'name' and 'changedToAt'.
+				 * 
+				 * 
+				 * 
+				 *  UUID -> Name history
+
+  https://api.mojang.com/user/profiles/<uuid>/names
+
+Returns all the usernames this user has used in the past and the one they are using currently
+Response
+
+[
+  {
+    "name": "Gold"
+  },
+  {
+    "name": "Diamond",
+    "changedToAt": 1414059749000
+  }
+]
+
+The changedToAt field is a UNIX timestamp in milliseconds. 
+				*/
+			}
 		}
 		
 		void BtnEditOpUserClick(object sender, EventArgs e)
 		{
-			
+			int idx = lstOpUsers.SelectedIndex;
+			if(idx < 0) return;
+			string item = lstOpUsers.Items[idx].ToString();
 		}
 		
 		void BtnDeleteOpUserClick(object sender, EventArgs e)
 		{
-			
+			int idx = lstOpUsers.SelectedIndex;
+			if(idx < 0) return;
+			string item = lstOpUsers.Items[idx].ToString();
+			bool removed = oplist.RemovePlayer(item.Replace(" : ", "|").Split('|')[0]);
+			if(removed)
+			{
+				MessageBox.Show("User removed successfully from OP list.", "Remove from OP list", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else
+			{
+				MessageBox.Show("Failed to remove user from the OP list.", "Remove from OP list", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 		
 		void BtnAddWhitelistUserClick(object sender, EventArgs e)
 		{
-			
+			int idx = lstWhitelistUsers.SelectedIndex;
+			if(idx < 0) return;
+			string item = lstWhitelistUsers.Items[idx].ToString();
 		}
 		
 		void BtnDeleteWhitelistUserClick(object sender, EventArgs e)
 		{
-			
+			int idx = lstWhitelistUsers.SelectedIndex;
+			if(idx < 0) return;
+			string item = lstWhitelistUsers.Items[idx].ToString();
+			bool removed = whitelist.RemovePlayer(item.Replace(" : ", "|").Split('|')[0]);
+			if(removed)
+			{
+				MessageBox.Show("User removed successfully from whitelist.", "Remove from whitelist", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			}
+			else
+			{
+				MessageBox.Show("Failed to remove user from the whitelist.", "Remove from whitelist", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }

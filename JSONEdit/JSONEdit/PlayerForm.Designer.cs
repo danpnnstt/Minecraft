@@ -89,6 +89,7 @@ namespace JSONEdit
 			this.txtUsername.ReadOnly = true;
 			this.txtUsername.Size = new System.Drawing.Size(340, 20);
 			this.txtUsername.TabIndex = 4;
+			this.txtUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TxtUsernameKeyUp);
 			// 
 			// label3
 			// 

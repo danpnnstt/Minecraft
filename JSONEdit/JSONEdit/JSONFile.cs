@@ -124,6 +124,47 @@ namespace JSONEdit
 			private set;
 		}
 		
+		public bool RemovePlayer(string uuid)
+		{
+			try
+			{
+				if(UUID.Contains<string>(uuid))
+				{
+					for(int idx = 0; idx < UUID.Length; idx++)
+					{
+						if(UUID[idx] == uuid)
+						{
+							List<string> l1 = new List<string>();
+							List<string> l2 = new List<string>();
+							List<int> l3 = new List<int>();
+							l1.AddRange(UUID);
+							l2.AddRange(Name);
+							if(OpLevel != null) l3.AddRange(OpLevel);
+							UUID = Name = null;
+							OpLevel = null;
+							GC.Collect();
+							l1.RemoveAt(idx);
+							l2.RemoveAt(idx);
+							if(l3.Count > 0) l3.RemoveAt(idx);
+							UUID = l1.ToArray();
+							Name = l2.ToArray();
+							if(l3.Count > 0) OpLevel = l3.ToArray();
+							break;
+						}
+					}
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			catch
+			{
+				return false;
+			}
+		}
+		
 		public JSONUserFile()
 		{
 			UUID = Name = null;

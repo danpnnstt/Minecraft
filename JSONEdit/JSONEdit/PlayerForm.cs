@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Net;
+using System.IO;
 
 namespace JSONEdit
 {
@@ -40,6 +42,13 @@ namespace JSONEdit
 			FillListBox();
 		}
 		
+		public PlayerForm(JSONUserFile json)
+		{
+			InitializeComponent();
+			MemberList = json.UUID;
+			FillListBox();
+		}
+		
 		void FillListBox()
 		{
 			lstMembers.Items.Clear();
@@ -52,6 +61,7 @@ namespace JSONEdit
 		void BtnAddClick(object sender, EventArgs e)
 		{
 			txtUUID.ReadOnly = false;
+			txtUsername.ReadOnly = false;
 			btnOK.Enabled = true;
 			btnAdd.Enabled = false;
 		}
@@ -78,6 +88,7 @@ namespace JSONEdit
 			txtUsername.Text = "";
 			txtUUID.Text = "";
 			txtUUID.ReadOnly = true;
+			txtUsername.ReadOnly = true;
 			btnOK.Enabled = false;
 			btnAdd.Enabled = true;
 			List<string> list = new List<string>();
@@ -90,6 +101,37 @@ namespace JSONEdit
 			list.Add(uuid);
 			MemberList = list.ToArray();
 			FillListBox();
+		}
+		
+		void TxtUsernameKeyUp(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				string uri = "https://api.mojang.com/users/profiles/minecraft/" + txtUsername.Text;
+				HttpWebRequest request = (HttpWebRequest)WebRequest.Create (uri);
+				request.MaximumAutomaticRedirections = 4;
+            	request.MaximumResponseHeadersLength = 4;
+            	HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            	Stream receive = response.GetResponseStream();
+            	StreamReader read = new StreamReader(receive);
+            	string json = read.ReadToEnd();
+            	json = json.Replace("{", "").Replace("}", "").Replace("\"", "");
+            	string[] elements = json.Split(',');
+            	Dictionary<string, string> dict = new Dictionary<string, string>();
+            	foreach(string elem in elements)
+            	{
+            		string[] s = elem.Split(':');
+            		if(s[0] == "id")
+            		{
+            			s[1] = new Guid(s[1]).ToString("D");
+            		}
+            		dict.Add(s[0], s[1]);
+            	}
+            	response.Close();
+            	read.Close();
+            	txtUUID.Text = dict["id"];
+            	txtUsername.Text = dict["name"];
+			}
 		}
 	}
 }
