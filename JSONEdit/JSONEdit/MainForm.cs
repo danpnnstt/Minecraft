@@ -7,6 +7,7 @@
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
 using System;
+using System.Net;
 using System.IO;
 using System.Collections.Generic;
 using System.Drawing;
@@ -32,6 +33,8 @@ namespace JSONEdit
 		public MainForm()
 		{
 			InitializeComponent();
+			Console.Error.WriteLine("Initialized Components.");
+			Console.Error.Write("Attempting to initialize objects........");
 			whitelist = new JSONUserFile();
 			oplist = new JSONUserFile();
 			propertiesFile = new ServerPropertiesFile();
@@ -40,12 +43,24 @@ namespace JSONEdit
 			cboParent.Items.Add("None");
 			permissionBoxes = new Dictionary<string, CheckBox>();
 			groups = new Dictionary<string, KeyValuePair<JSONGroupFile, string>>();
+			Console.Error.WriteLine("done.");
+			Console.Error.Write("Setting Tool Tips.....");
 			SetToolTips();
+			Console.Error.WriteLine("done.");
+			Console.Error.Write("Setting CheckBox Groups......");
 			SetCheckboxGroups();
-			LoadGroups();
+			Console.Error.WriteLine("done.");
+			Console.Error.Write("Loading groups........");
+			LoadGroups();Console.Error.WriteLine("done.");
+			Console.Error.Write("Loading properties......");
 			LoadProperties();
+			Console.Error.WriteLine("done.");
+			Console.Error.Write("Validating groups.......");
 			ValidateGroups();
+			Console.Error.WriteLine("done.");
+			Console.Error.Write("Loading user files....");
 			LoadUserFiles();
+			Console.Error.WriteLine("done.");
 		}
 		
 		private void LoadUserFiles()
@@ -528,35 +543,36 @@ namespace JSONEdit
 		void BtnAddOpUserClick(object sender, EventArgs e)
 		{
 			PlayerForm pf = new PlayerForm(oplist);
-			if(pf.ShowDialog() == DialogResult.OK)
+			List<string> mems = new List<string>();
+			if(oplist.UUID != null) mems.AddRange(oplist.UUID);
+			pf.ShowDialog();
+			List<string> new_mems = new List<string>();
+			new_mems.AddRange(pf.MemberList);
+			foreach(string m in mems)
 			{
-				/*
-				 * Use the command below to turn UUIDs into player names.
-				 * Use the same logic as before to split into a dictionary, except the value
-				 * parameter will be another dictionary with keys 'name' and 'changedToAt'.
-				 * 
-				 * 
-				 * 
-				 *  UUID -> Name history
-
-  https://api.mojang.com/user/profiles/<uuid>/names
-
-Returns all the usernames this user has used in the past and the one they are using currently
-Response
-
-[
-  {
-    "name": "Gold"
-  },
-  {
-    "name": "Diamond",
-    "changedToAt": 1414059749000
-  }
-]
-
-The changedToAt field is a UNIX timestamp in milliseconds. 
-				*/
+				if(new_mems.Contains(m))
+				{
+					new_mems.Remove(m);
+				}
 			}
+			foreach(string m in new_mems)
+			{
+				string uuid = m;
+				string uri = "https://api.mojang.com/user/profiles/" + uuid.Replace("-", "") + "/names";
+				HttpWebRequest request = (HttpWebRequest)WebRequest.Create (uri);
+				request.MaximumAutomaticRedirections = 4;
+            	request.MaximumResponseHeadersLength = 4;
+            	HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            	Stream receive = response.GetResponseStream();
+            	StreamReader read = new StreamReader(receive);
+            	string json = read.ReadToEnd();
+            	json = json.Replace("{", "").Replace("}", "").Replace("\"", "").Replace("[", "").Replace("]", "");
+            	string[] elements = json.Split(',');
+            	string username = elements[0].Split(':')[1].Trim();
+            	oplist.AddPlayer(uuid, username, 4);
+			}
+			FillOpUsersList();
+			oplist.SaveFile(BASE_DIRECTORY + "ops.json");
 		}
 		
 		void BtnEditOpUserClick(object sender, EventArgs e)
@@ -564,6 +580,8 @@ The changedToAt field is a UNIX timestamp in milliseconds.
 			int idx = lstOpUsers.SelectedIndex;
 			if(idx < 0) return;
 			string item = lstOpUsers.Items[idx].ToString();
+			FillOpUsersList();
+			oplist.SaveFile(BASE_DIRECTORY + "ops.json");
 		}
 		
 		void BtnDeleteOpUserClick(object sender, EventArgs e)
@@ -580,13 +598,43 @@ The changedToAt field is a UNIX timestamp in milliseconds.
 			{
 				MessageBox.Show("Failed to remove user from the OP list.", "Remove from OP list", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+			FillOpUsersList();
+			oplist.SaveFile(BASE_DIRECTORY + "ops.json");
 		}
 		
 		void BtnAddWhitelistUserClick(object sender, EventArgs e)
 		{
-			int idx = lstWhitelistUsers.SelectedIndex;
-			if(idx < 0) return;
-			string item = lstWhitelistUsers.Items[idx].ToString();
+			PlayerForm pf = new PlayerForm(whitelist);
+			List<string> mems = new List<string>();
+			if(whitelist.UUID != null) mems.AddRange(whitelist.UUID);
+			pf.ShowDialog();
+			List<string> new_mems = new List<string>();
+			new_mems.AddRange(pf.MemberList);
+			foreach(string m in mems)
+			{
+				if(new_mems.Contains(m))
+				{
+					new_mems.Remove(m);
+				}
+			}
+			foreach(string m in new_mems)
+			{
+				string uuid = m;
+				string uri = "https://api.mojang.com/user/profiles/" + uuid.Replace("-", "") + "/names";
+				HttpWebRequest request = (HttpWebRequest)WebRequest.Create (uri);
+				request.MaximumAutomaticRedirections = 4;
+            	request.MaximumResponseHeadersLength = 4;
+            	HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            	Stream receive = response.GetResponseStream();
+            	StreamReader read = new StreamReader(receive);
+            	string json = read.ReadToEnd();
+            	json = json.Replace("{", "").Replace("}", "").Replace("\"", "").Replace("[", "").Replace("]", "");
+            	string[] elements = json.Split(',');
+            	string username = elements[0].Split(':')[1].Trim();
+            	whitelist.AddPlayer(uuid, username);
+			}
+			FillWhiteListUsers();
+			whitelist.SaveFile(BASE_DIRECTORY + "whitelist.json");
 		}
 		
 		void BtnDeleteWhitelistUserClick(object sender, EventArgs e)
@@ -603,6 +651,21 @@ The changedToAt field is a UNIX timestamp in milliseconds.
 			{
 				MessageBox.Show("Failed to remove user from the whitelist.", "Remove from whitelist", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
+			FillWhiteListUsers();
+			whitelist.SaveFile(BASE_DIRECTORY + "whitelist.json");
+		}
+		
+		private void BtnReloadPermissionsClick(object sender, EventArgs e)
+		{
+			int idx = cboGroup.SelectedIndex;
+			cboGroup.Items.Clear();
+			cboParent.Items.Clear();
+			cboParent.Items.Add("None");
+			SetPermissions(false);
+			groups.Clear();
+			LoadGroups();
+			ValidateGroups();
+			if(idx >= 0) cboGroup.SelectedIndex = idx;
 		}
 	}
 }

@@ -151,6 +151,7 @@ namespace JSONEdit
 		private System.Windows.Forms.Button btnAddOpUser;
 		private System.Windows.Forms.Button btnDeleteWhitelistUser;
 		private System.Windows.Forms.Button btnAddWhitelistUser;
+		private System.Windows.Forms.Button btnReloadPermissions;
 		
 		/// <summary>
 		/// Disposes resources used by the form.
@@ -312,6 +313,7 @@ namespace JSONEdit
 			this.lstOpUsers = new System.Windows.Forms.ListBox();
 			this.label20 = new System.Windows.Forms.Label();
 			this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+			this.btnReloadPermissions = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.tcContent.SuspendLayout();
 			this.tpPermissions.SuspendLayout();
@@ -359,6 +361,7 @@ namespace JSONEdit
 			// 
 			// tpPermissions
 			// 
+			this.tpPermissions.Controls.Add(this.btnReloadPermissions);
 			this.tpPermissions.Controls.Add(this.btnRemoveAll);
 			this.tpPermissions.Controls.Add(this.btnGrantAll);
 			this.tpPermissions.Controls.Add(this.grpPermissions);
@@ -1787,6 +1790,16 @@ namespace JSONEdit
 			this.label20.Size = new System.Drawing.Size(214, 13);
 			this.label20.TabIndex = 0;
 			this.label20.Text = "List of players currently OP\'ed on the server:";
+			// 
+			// btnReloadPermissions
+			// 
+			this.btnReloadPermissions.Location = new System.Drawing.Point(528, 67);
+			this.btnReloadPermissions.Name = "btnReloadPermissions";
+			this.btnReloadPermissions.Size = new System.Drawing.Size(122, 23);
+			this.btnReloadPermissions.TabIndex = 14;
+			this.btnReloadPermissions.Text = "Reload all from file";
+			this.btnReloadPermissions.UseVisualStyleBackColor = true;
+			this.btnReloadPermissions.Click += new System.EventHandler(this.BtnReloadPermissionsClick);
 			// 
 			// MainForm
 			// 

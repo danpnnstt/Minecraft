@@ -165,6 +165,37 @@ namespace JSONEdit
 			}
 		}
 		
+		public bool AddPlayer(string uuid, string name, int level = -1)
+		{
+			try
+			{
+				List<string> uid = new List<string>();
+				List<string> nme = new List<string>();
+				List<int> lvl = new List<int>();
+				if(UUID != null) uid.AddRange(UUID);
+				if(Name != null) nme.AddRange(Name);
+				if(OpLevel != null) lvl.AddRange(OpLevel);
+				UUID = Name = null;
+				OpLevel = null;
+				GC.Collect();
+				uid.Add(uuid);
+				nme.Add(name);
+				if(level != -1)
+				{
+					lvl.Add(level);
+				}
+				UUID = uid.ToArray();
+				Name = nme.ToArray();
+				if(lvl.Count > 0) OpLevel = lvl.ToArray();
+				return true;
+			}
+			catch(Exception ex)
+			{
+				Console.Error.WriteLine(ex.StackTrace);
+				return false;
+			}
+		}
+		
 		public JSONUserFile()
 		{
 			UUID = Name = null;
@@ -263,6 +294,7 @@ namespace JSONEdit
 			}
 			catch(Exception e)
 			{
+				Console.Error.WriteLine(e.StackTrace);
 				return false;
 			}
 		}
@@ -308,6 +340,7 @@ namespace JSONEdit
 			}
 			catch(Exception ex)
 			{
+				Console.Error.WriteLine(ex.StackTrace);
 				return false;
 			}
 		}
@@ -395,6 +428,7 @@ namespace JSONEdit
 			} 
 			catch (System.Exception e) 
 			{
+				Console.Error.WriteLine(e.StackTrace);
 				return false;
 			} 
 			finally 
@@ -425,6 +459,7 @@ namespace JSONEdit
 			} 
 			catch (System.Exception e) 
 			{
+				Console.Error.WriteLine(e.StackTrace);
 				return false;
 			}
 			finally 
@@ -681,6 +716,7 @@ namespace JSONEdit
 			}
 			catch(Exception ex)
 			{
+				Console.Error.WriteLine(ex.StackTrace);
 				return false;
 			}
 		}
@@ -709,6 +745,7 @@ namespace JSONEdit
 			}
 			catch(Exception ex)
 			{
+				Console.Error.WriteLine(ex.StackTrace);
 				return false;
 			}
 		}

@@ -1,0 +1,4 @@
+@echo off
+path = "C:\Windows\Microsoft.NET\Framework\v4.0.30319"
+csc.exe /optimize /target:exe /debug  /lib:"C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit" /reference:NewtonSoft.Json.dll /nologo /debug /out:"C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\bin\Debug\JSONEdit.exe" /resource:"C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\GroupForm.resx" /resource:"C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\MainForm.resx" /resource:"C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit\JSONEdit\PlayerForm.resx" /recurse:"C:\Users\dhartenbach\Documents\GitHub\Minecraft\JSONEdit\*.cs" /main:JSONEdit.Program
+pause
