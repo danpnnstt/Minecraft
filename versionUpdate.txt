@@ -1,0 +1,35 @@
+Fixed this version:
+
+- Prompts for directory if no command line parameter specified
+- Now adds a final directory separation character ('\') if the path does not include one
+- Added debugging output (need to remove before final release)
+- The op list and whitelist list boxes now refresh when the Add/Edit/Delete options are used
+- Corrected bug where Delete option would not work for Op list or Whitelist
+- Changes made to a group's permissions are not actually recorded until the 'Save Changes' button is clicked (this prevents the auto-write to file)
+- Changes made to a group's membership (the player list) is recorded immediately, but is not written to file until the 'Save Changes' button is clicked
+- Changes made to the server properties tab are recorded immediately, but are not written to file until the 'Save to file' button is clicked
+- Added 'Reload from file' option for the Permissions tab
+- All other changes made in the program are immediately written to file
+- Implemented Add user to Op list, however they are always given level 4 permissions
+- Implemented Add user to Whitelist
+
+still need to do:
+- Correct Op level to reflect whatever default is set in server.properties
+- On the permissions tab, disable all options if an option is not selected in the group drop-down
+- Enable the parent tab to change the parent name
+- Enable the group name textbox to allow user to change the name of the group (also changes the name of the file)
+
+
+Once all of this is done, create Java version of the application & verify it runs on Linux.
+
+Idea: Perform an OS scan at program launch to launch the correct version?!?
+
+Idea: Implement system scan at program launch to locate the install directory.  Searches for server.properties, eula.txt, and minecraft_server.1.7.10.jar.  If these files are missing, displays a warning to the user and exits.
+
+
+Create "downloads" tab and include links to all versions of the program:
+
+https://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/1.7.10.jar
+https://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/minecraft_server.1.7.10.jar
+
+See https://mcversions.net/
