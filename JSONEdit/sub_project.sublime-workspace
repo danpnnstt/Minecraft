@@ -7,22 +7,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "JSONEdit/Program.cs",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "JSONEdit/MainForm.cs",
-			"settings":
-			{
-				"buffer_size": 0,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "Packages/C# Compile & Run/CSharpSingleFileBuild.sublime-build",
 	"build_system_choices":
@@ -81,15 +65,15 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit",
 		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit/JSONEdit"
 	],
 	"file_history":
 	[
+		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit/JSONEdit/Program.cs",
+		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit/JSONEdit/MainForm.cs",
 		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit/JSONEdit/JSONFile.cs",
 		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit/JSONEdit/Properties/AssemblyInfo.cs",
 		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit/sub_project.sublime-project",
-		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit/JSONEdit/MainForm.cs",
 		"/C/Users/dhartenbach/Documents/GitHub/Minecraft/JSONEdit/JSONEdit/app.config"
 	],
 	"find":
@@ -127,68 +111,8 @@
 	"groups":
 	[
 		{
-			"selected": 1,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "JSONEdit/Program.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"tab_size": 6,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "JSONEdit/MainForm.cs",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C#/C#.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -235,7 +159,7 @@
 	"project": "sub_project.sublime-project",
 	"replace":
 	{
-		"height": 62.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
